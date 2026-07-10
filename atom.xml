@@ -10,7 +10,23 @@
   <rights>All rights reserved 2026, LightMC</rights>
   <subtitle>Discover</subtitle>
   <title>LightMC LightMinecraft</title>
-  <updated>2026-07-10T08:12:07.782Z</updated>
+  <updated>2026-07-10T12:57:27.119Z</updated>
+  <entry>
+    <author>
+      <name>LightMC</name>
+    </author>
+    <content>
+      <![CDATA[<h1 id="本教程默认读者已经装好编译器，编译器（VS2022-MSVC）配置教程择期发布。"><a href="#本教程默认读者已经装好编译器，编译器（VS2022-MSVC）配置教程择期发布。" class="headerlink" title="本教程默认读者已经装好编译器，编译器（VS2022 MSVC）配置教程择期发布。"></a>本教程默认读者已经装好编译器，编译器（VS2022 MSVC）配置教程择期发布。</h1><p><code>#include &lt;iostream&gt; int main(){       std::cout&lt;&lt;&quot;Hello World!&quot;&lt;&lt;endl;       return 0; }</code></p><h2 id="让我们从第一行开始。"><a href="#让我们从第一行开始。" class="headerlink" title="让我们从第一行开始。"></a>让我们从第一行开始。</h2><h3 id="第一行：-include"><a href="#第一行：-include" class="headerlink" title="第一行：#include &lt;iostream&gt;"></a>第一行：<code>#include &lt;iostream&gt;</code></h3><p>include，意为导入，其意义便是导入头文件。<br>头文件是大部分C++程序运行时不可或缺的东西，接下来，例如vector，algorithm，map，queue等头文件会时常被我们提起。<br><em><strong>请注意，许多教程都会提到一个叫做bit&#x2F;stdc++.h的东西，这个东西常被称为万能头文件。但在我们讲解中使用的MSVC编译器中没有该头文件，强制引用会报错。</strong></em></p><h3 id="第二行：int-main"><a href="#第二行：int-main" class="headerlink" title="第二行：int main()"></a>第二行：int main()</h3><p>这是C++程序运行的主函数，它不可以改名，不可以不写，并且在初学阶段我强烈不推荐任何人使用void main，signed main之类的写法。</p><h3 id="第三行-std-cout"><a href="#第三行-std-cout" class="headerlink" title="第三行 std::cout&lt;&lt;”Hello World!”&lt;&lt;endl;"></a>第三行 std::cout&lt;&lt;”Hello World!”&lt;&lt;endl;</h3><p>std::是标准命名空间前缀，今后想参加大型程序开发的各位，一定不要偷懒去写什么using namespace std;，没有std:: 很容易报各种莫名其妙的错误。<br>cout是输出流函数，用于输出（想用C风格输出欢迎使用printf）。</p><blockquote><blockquote><p>表示输出流，在今后的字符串操作中我们会详细讲到它<br>“Hello World!” 表示一个内容为 Hello World! 的字符串，同样，对于此类字符串操作，我们同样在后面会讲到它。<br><em><strong>注意，绝对不要写成’’单引号</strong></em></p></blockquote></blockquote><h3 id="第五行-return-0"><a href="#第五行-return-0" class="headerlink" title="第五行 return 0;"></a>第五行 return 0;</h3><p>返回值，默认返回0表示程序运行成功（并不代表没有bug）</p><hr><p>第一期到此结束</p>]]>
+    </content>
+    <id>http://example.com/2026/07/10/C-cpp%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</id>
+    <link href="http://example.com/2026/07/10/C-cpp%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
+    <published>2026-07-10T12:39:17.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="本教程默认读者已经装好编译器，编译器（VS2022-MSVC）配置教程择期发布。"><a href="#本教程默认读者已经装好编译器，编译器（VS2022-MSVC）配置教程择期发布。" class="headerlink" title="本教程默认读者已经装好编]]>
+    </summary>
+    <title>C++/cpp入门教程</title>
+    <updated>2026-07-10T12:57:27.119Z</updated>
+  </entry>
   <entry>
     <author>
       <name>LightMC</name>
@@ -28,21 +44,5 @@
       <![CDATA[<Hello!>]]>
     </title>
     <updated>2026-07-10T08:12:07.782Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>LightMC</name>
-    </author>
-    <content>
-      <![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]>
-    </content>
-    <id>http://example.com/2026/07/06/hello-world/</id>
-    <link href="http://example.com/2026/07/06/hello-world/"/>
-    <published>2026-07-06T11:49:07.616Z</published>
-    <summary>
-      <![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for]]>
-    </summary>
-    <title>Hello World</title>
-    <updated>2026-07-06T11:49:07.616Z</updated>
   </entry>
 </feed>
