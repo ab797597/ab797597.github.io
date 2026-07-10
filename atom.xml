@@ -9,7 +9,25 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, John Doe</rights>
   <title>Hexo</title>
-  <updated>2026-07-06T11:49:07.616Z</updated>
+  <updated>2026-07-10T08:12:07.782Z</updated>
+  <entry>
+    <author>
+      <name>John Doe</name>
+    </author>
+    <content>
+      <![CDATA[<h1 id="Hello"><a href="#Hello" class="headerlink" title="Hello!"></a>Hello!</h1><p>你好:) !这里是LightMC的博客，欢迎访问我的页面！<br>页面正在完善中，如果有页面提示暂留或404也是正常的……</p>]]>
+    </content>
+    <id>http://example.com/2026/07/10/Hello/</id>
+    <link href="http://example.com/2026/07/10/Hello/"/>
+    <published>2026-07-10T07:50:30.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="Hello"><a href="#Hello" class="headerlink" title="Hello!"></a>Hello!</h1><p>你好:) !这里是LightMC的博客，欢迎访问我的页面！<br>页面正在完善中，如果有页面提示暂留或404也是]]>
+    </summary>
+    <title>
+      <![CDATA[<Hello!>]]>
+    </title>
+    <updated>2026-07-10T08:12:07.782Z</updated>
+  </entry>
   <entry>
     <author>
       <name>John Doe</name>
