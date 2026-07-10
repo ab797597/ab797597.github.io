@@ -43,12 +43,17 @@
       
       <!-- 随机句子功能 -->
       
-    </head>
+      <script src="/js/random-sentences.js"></script>
+      
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
 
 
 <body class="darkmode">
   <div id="app">
     
+    
+      <canvas class="click-effect-canvas" width="1777" height="841"></canvas>
     
     <main class="content on">
       
@@ -63,7 +68,7 @@
       <a href="/"><h1>Hexo</h1></a>
       <div id="subtitle-box">
         
-          <span id="subtitle">Hello World</span>
+          <span id="subtitle"></span>
         
       </div>
       <div>
@@ -79,6 +84,22 @@
 
 
 
+  <script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['Explore.Dream.Discover.', '恐惧是生物的本能，勇气是人类的赞歌', '这是最好的时代，也是最坏的时代。这是智慧的时代，也是愚蠢的时代。这是信任的年代，也是怀疑的年代。这是光明的季节，也是黑暗的季节。这是希望的春天，也是失望的冬天。我们将拥有一切，我们将一无所有。我们直升天堂，我们直下地狱。'],
+        startDelay: 1000,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+
 
 <div id="main">
   <section class="outer">
@@ -93,6 +114,22 @@
     
 </ul>
   
+  
+  
+
+<div class="notice">
+    <i class="ri-heart-fill"></i>
+    <div class="notice-content" id="broad"></div>
+</div>
+<script type="text/javascript">
+    fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("broad").innerHTML = data.hitokoto;
+        })
+        .catch(console.error)
+</script>
+
   
   <article class="articles">
     
@@ -205,6 +242,13 @@
     <ul>
       <li>
         
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
       </li>
     </ul>
     <ul>
@@ -220,6 +264,13 @@
       </li>
     </ul>
     <!-- 随机句子模块 -->
+    
+    <ul>
+      <li>
+        <div id="random-sentence" class="random-sentence" 
+             data-random-sentences-config='{"use_local_file": true}'></div>
+      </li>
+    </ul>
     
   </div>
 </footer>    
@@ -291,6 +342,10 @@
 <nav class="navbar navbar-bottom">
   <ul class="nav">
     <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
       
       
     </li>
@@ -443,6 +498,10 @@
 
 <!-- busuanzi -->
 
+  
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
 
 <!-- ClickLove -->
 
@@ -451,6 +510,10 @@
 
 
 <!-- ClickBoom2 -->
+
+  
+<script src="/js/clickBoom2.js"></script>
+
 
 
 <!-- CodeCopy -->
@@ -516,6 +579,10 @@
 
 
 <!-- CanvasBackground -->
+
+  
+<script src="/js/dz.js"></script>
+
 
 
 <script>
