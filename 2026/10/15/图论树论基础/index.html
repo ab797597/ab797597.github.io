@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+
+<html lang="zh_CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="LightMC的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>图论树论基础 |  LightMC LightMinecraft</title>
+  <meta name="generator" content="hexo-theme-ayeria">
+      
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      
+      <link rel="preconnect" href="https://fonts.font.im" crossorigin />
+      <link rel="preconnect" href="https://fonts.gstatic.font.im" crossorigin />
+      <link rel="stylesheet" href="https://fonts.font.im/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400&display=swap" />
+      
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/ayeria-layout.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+
+      
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      
+
+      <!-- mermaid -->
+      
+      
+      <!-- 随机句子功能 -->
+      
+      <script src="/js/random-sentences.js"></script>
+      
+    <link rel="alternate" href="/atom.xml" title="LightMC LightMinecraft" type="application/atom+xml">
+</head>
+
+
+<body class="darkmode">
+  <div id="app">
+    
+    
+      <canvas class="click-effect-canvas" width="1777" height="841"></canvas>
+    
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="[posts]-图论树论基础"
+  class="article article-type-[posts]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  图论树论基础
+</h1>
+ 
+
+      
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2026/10/15/%E5%9B%BE%E8%AE%BA%E6%A0%91%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2026-10-15T14:12:06.000Z" itemprop="datePublished">2026-10-15</time>
+</a>
+      
+      
+        
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+
+      
+        <h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><h2 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h2><p><em><strong>你总得会存图，对吧</strong></em></p>
+<h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>用二维数组的一种存储图的方式，好写，时间复杂度好一些，但是空间复杂度大，容易爆空间</p>
+<p>查询是否存在某条边：𝑂(1)</p>
+<p>遍历一个点的所有出边：𝑂(𝑛)</p>
+<p>遍历整张图：𝑂(𝑛^2)</p>
+<p>空间复杂度：𝑂(𝑛^2)</p>
+<p>挺不错的是吗？来看看代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line">vector&lt;<span class="type">bool</span>&gt; vis;</span><br><span class="line">vector&lt;vector&lt;<span class="type">bool</span>&gt;&gt; adj;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">find_edge</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v)</span> </span>&#123; <span class="keyword">return</span> adj[u][v]; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (vis[u]) <span class="keyword">return</span>;</span><br><span class="line">  vis[u] = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> v = <span class="number">1</span>; v &lt;= n; ++v) &#123;</span><br><span class="line">    <span class="keyword">if</span> (adj[u][v]) &#123;</span><br><span class="line">      <span class="built_in">dfs</span>(v);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">  vis.<span class="built_in">resize</span>(n + <span class="number">1</span>);</span><br><span class="line">  adj.<span class="built_in">resize</span>(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">bool</span>&gt;(n + <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">    <span class="type">int</span> u, v;</span><br><span class="line">    cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">    adj[u][v] = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//摘自OIwiki</span></span><br></pre></td></tr></table></figure>
+<p>下面来看看邻接表</p>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>举个例子吧</p>
+<p>有一个图上有一个点u，它和点1，2，4皆相连<br>于是邻接表便存成<code>adj[u]={1,2,4}</code><br>直接存点，甚好甚好</p>
+<p>复杂度：<br>遍历整张图：𝑂(𝑛 +𝑚)</p>
+<p>空间复杂度：𝑂(𝑚)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line">vector&lt;<span class="type">bool</span>&gt; vis;</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; adj;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">find_edge</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; adj[u].<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (adj[u][i] == v) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (vis[u]) <span class="keyword">return</span>;</span><br><span class="line">  vis[u] = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; adj[u].<span class="built_in">size</span>(); ++i) <span class="built_in">dfs</span>(adj[u][i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">  vis.<span class="built_in">resize</span>(n + <span class="number">1</span>);</span><br><span class="line">  adj.<span class="built_in">resize</span>(n + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">    <span class="type">int</span> u, v;</span><br><span class="line">    cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">    adj[u].<span class="built_in">push_back</span>(v);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h3><p>一种借助邻接表实现的用数组存储的邻接表<del>（好复杂的句子啊</del><br>好处：存了边的顺序，在某些对于边的顺序又强要求的题目里很好用<br>坏处：不支持数组自动排序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line">vector&lt;<span class="type">bool</span>&gt; vis;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; head, nxt, to;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">  nxt.<span class="built_in">push_back</span>(head[u]);</span><br><span class="line">  head[u] = to.<span class="built_in">size</span>();</span><br><span class="line">  to.<span class="built_in">push_back</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">find_edge</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = head[u]; ~i; i = nxt[i]) &#123;  <span class="comment">// ~i 表示 i != -1</span></span><br><span class="line">    <span class="keyword">if</span> (to[i] == v) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (vis[u]) <span class="keyword">return</span>;</span><br><span class="line">  vis[u] = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = head[u]; ~i; i = nxt[i]) <span class="built_in">dfs</span>(to[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">  vis.<span class="built_in">resize</span>(n + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">  head.<span class="built_in">resize</span>(n + <span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">    <span class="type">int</span> u, v;</span><br><span class="line">    cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">    <span class="built_in">add</span>(u, v);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这个写法我个人不太喜欢，相对而言我更喜欢用结构体</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="查找算法"><a href="#查找算法" class="headerlink" title="查找算法"></a>查找算法</h2><h3 id="DFS（图论）"><a href="#DFS（图论）" class="headerlink" title="DFS（图论）"></a>DFS（图论）</h3><p><em><strong>大有来头的算法</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DFS(v) // v 可以是图中的一个顶点，也可以是抽象的概念，如 dp 状态等．</span><br><span class="line">  在 v 上打访问标记</span><br><span class="line">  for u in v 的相邻节点</span><br><span class="line">    if u 没有打过访问标记 then</span><br><span class="line">      DFS(u)</span><br><span class="line">    end</span><br><span class="line">  end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p><em><strong>记得剪枝，不然时间复杂度爆炸，炸给你看</strong></em><br>一种栈实现<br>一层一层遍历，有边就压，没边就弹</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; adj;  <span class="comment">// 邻接表</span></span><br><span class="line">vector&lt;<span class="type">bool</span>&gt; vis;         <span class="comment">// 记录节点是否已经遍历</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> s)</span> </span>&#123;</span><br><span class="line">  stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">  st.<span class="built_in">push</span>(s);</span><br><span class="line">  vis[s] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (!st.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    <span class="type">int</span> u = st.<span class="built_in">top</span>();</span><br><span class="line">    st.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v : adj[u]) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!vis[v]) &#123;</span><br><span class="line">        vis[v] = <span class="literal">true</span>;  <span class="comment">// 确保栈里没有重复元素</span></span><br><span class="line">        st.<span class="built_in">push</span>(v);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>递归实现(邻接表)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; adj;  <span class="comment">// 邻接表</span></span><br><span class="line">vector&lt;<span class="type">bool</span>&gt; vis;         <span class="comment">// 记录节点是否已经遍历</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">const</span> <span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">  vis[u] = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> v : adj[u])</span><br><span class="line">    <span class="keyword">if</span> (!vis[v]) <span class="built_in">dfs</span>(v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>递归实现(链式前向星)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">  vis[u] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = head[u]; i; i = e[i].x) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!vis[e[i].t]) &#123;</span><br><span class="line">      <span class="built_in">dfs</span>(v);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p><em><strong>广度优先搜索，挺酷的，不是吗</strong></em><br>链式前向星实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (!Q.<span class="built_in">empty</span>()) Q.<span class="built_in">pop</span>();</span><br><span class="line">  Q.<span class="built_in">push</span>(u);</span><br><span class="line">  vis[u] = <span class="number">1</span>;</span><br><span class="line">  d[u] = <span class="number">0</span>;</span><br><span class="line">  p[u] = <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">while</span> (!Q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    u = Q.<span class="built_in">front</span>();</span><br><span class="line">    Q.<span class="built_in">pop</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!vis[e[i].to]) &#123;</span><br><span class="line">        Q.<span class="built_in">push</span>(e[i].to);</span><br><span class="line">        vis[e[i].to] = <span class="number">1</span>;</span><br><span class="line">        d[e[i].to] = d[u] + <span class="number">1</span>;</span><br><span class="line">        p[e[i].to] = u;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">restore</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> v = x; v != <span class="number">-1</span>; v = p[v]) &#123;</span><br><span class="line">    res.<span class="built_in">push_back</span>(v);</span><br><span class="line">  &#125;</span><br><span class="line">  std::<span class="built_in">reverse</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; res.<span class="built_in">size</span>(); ++i) <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, res[i]);</span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体来说，我们用一个队列 Q 来记录要处理的节点，然后开一个布尔数组 vis[] 来标记是否已经访问过某个节点．</p>
+<p>开始的时候，我们将所有节点的 vis 值设为 0，表示没有访问过；然后把起点 s 放入队列 Q 中并将 vis[s] 设为 1．</p>
+<p>之后，我们每次从队列 Q 中取出队首的节点 u，然后把与 u 相邻的所有节点 v 标记为已访问过并放入队列 Q．</p>
+<p>循环直至当队列 Q 为空，表示 BFS 结束．</p>
+<p>在 BFS 的过程中，也可以记录一些额外的信息．例如上述代码中，d 数组用于记录起点到某个节点的最短距离（要经过的最少边数），p 数组记录是从哪个节点走到当前节点的．</p>
+<p>有了 d 数组，可以方便地得到起点到一个节点的距离．</p>
+<p>有了 p 数组，可以方便地还原出起点到一个点的最短路径．上述代码中的 restore 函数使用该数组依次输出从起点到节点 x 的最短路径所经过的节点．</p>
+<p>时间复杂度 𝑂(𝑛 +𝑚)</p>
+<p>空间复杂度 𝑂(𝑛)（vis 数组和队列）</p>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>应用<br>在一个无权图上求从起点到其他所有点的最短路径．<br>在 𝑂(𝑛 +𝑚)<br>O(n+m) 时间内求出所有连通块．（我们只需要从每个没有被访问过的节点开始做 BFS，显然每次 BFS 会走完一个连通块）<br>如果把一个游戏的动作看做是状态图上的一条边（一个转移），那么 BFS 可以用来找到在游戏中从一个状态到达另一个状态所需要的最小步骤．<br>在一个有向无权图中找最小环．（从每个点开始 BFS，在我们即将抵达一个之前访问过的点开始的时候，就知道遇到了一个环．图的最小环是每次 BFS 得到的最小环的平均值．）<br>找到一定在 (𝑎,𝑏)<br>(a, b) 最短路上的边．（分别从 a 和 b 进行 BFS，得到两个 d 数组．之后对每一条边 (𝑢,𝑣)<br>(u, v)，如果 𝑑𝑎[𝑢] +1 +𝑑𝑏[𝑣] &#x3D;𝑑𝑎[𝑏]则说明该边在最短路上）<br>找到一定在 (𝑎,𝑏)最短路上的点．<br>（分别从 a 和 b 进行 BFS，得到两个 d 数组．之后对每一个点 v，如果 𝑑𝑎[𝑣] +𝑑𝑏[𝑣] &#x3D;𝑑𝑎[𝑏]则说明该点在某条最短路上）<br>找到一条长度为偶数的最短路．（我们需要一个构造一个新图，把每个点拆成两个新点，原图的边 (𝑢,𝑣)<br>(u, v) 变成 ((𝑢,0),(𝑣,1)) 和 ((𝑢,1),(𝑣,0))．<br>对新图做 BFS，(𝑠,0)和 (𝑡,0)之间的最短路即为所求<br>在一个边权为 0&#x2F;1 的图上求最短路，见下方双端队列 BFS．<br>观感好烂，去OIWiki上看把（<br>未完待续。。。</p>
+
+      
+
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+            Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+
+    <footer class="article-footer">
+      
+        
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+  <div class="wx-modal-close">
+    <i class="ri-close-line"></i>
+  </div>
+  <p class="wx-modal-caption">扫一扫，分享到微信</p>
+  <div class="wx-qrcode-frame">
+    <img class="wx-qrcode-img" src="" data-url="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http%3A%2F%2Fexample.com%2F2026%2F10%2F15%2F%25E5%259B%25BE%25E8%25AE%25BA%25E6%25A0%2591%25E8%25AE%25BA%25E5%259F%25BA%25E7%25A1%2580%2F" alt="微信分享二维码">
+  </div>
+</div>
+
+<div id="share-mask"></div>
+
+      
+      
+    </footer>
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2026/10/15/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="article-nav-link">
+        <strong class="article-nav-caption">next passage</strong>
+        <div class="article-nav-title">图论树论基础</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  <!-- [2026-03] 评论系统已从 Gitalk/Twikoo 迁移至 giscus，详见 doc/audit-report.md #1 #9 -->
+
+  
+    
+
+  
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2026
+        <i class="ri-heart-fill heart_icon"></i> LightMC
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+    <!-- 随机句子模块 -->
+    
+    <ul>
+      <li>
+        <div id="random-sentence" class="random-sentence" 
+             data-random-sentences-config='{"use_local_file": true}'></div>
+      </li>
+    </ul>
+    
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="float-btn totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="float-btn todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="float-btn navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/favicon.svg" alt="LightMC LightMinecraft"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link"
+         href="/"
+         
+      >主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link"
+         href="/archives"
+         
+      >全部文章</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link"
+         href="/categories"
+         
+      >文章分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link"
+         href="/tags"
+         
+      >全部标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link"
+         href="/friends"
+         
+      >友情链接</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link"
+         href="/about"
+         
+      >关于本站</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+
+
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<!-- Tocbot -->
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    tocbot.init({
+      tocSelector: ".tocbot",
+      contentSelector: ".article-entry",
+      headingSelector: "h1, h2, h3, h4, h5, h6",
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      scrollContainer: "main",
+      positionFixedSelector: ".tocbot",
+      positionFixedClass: "is-position-fixed",
+      fixedSidebarOffset: "auto",
+    });
+  </script>
+
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css" />
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/dist/main.js"></script>
+
+
+<!-- ImageViewer -->
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+<!-- MathJax -->
+
+
+<!-- Katex -->
+
+
+<!-- busuanzi -->
+
+  
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<!-- ClickLove -->
+
+
+<!-- ClickBoom1 -->
+
+
+<!-- ClickBoom2 -->
+
+  
+<script src="/js/clickBoom2.js"></script>
+
+
+
+<!-- CodeCopy -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+<!-- CanvasBackground -->
+
+  
+<script src="/js/dz.js"></script>
+
+
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=2653011467&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>
