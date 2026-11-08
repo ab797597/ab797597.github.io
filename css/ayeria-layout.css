@@ -28,3 +28,30 @@
     transform: translateX(0);
   }
 }
+body.post-bg {
+  background-image: url("/images/cover.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+body.post-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: rgba(255,255,255,0.7);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+body.post-bg.darkmode::before {
+  background-color: rgba(0,0,0,0.7);
+}
+.page-empty {
+  margin: 2rem 0;
+  opacity: 0.5;
+}
