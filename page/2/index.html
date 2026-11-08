@@ -128,6 +128,21 @@
   
 
   
+  
+<section id="history-today" class="history-today" hidden
+  data-max="6">
+  <h2 class="history-today__title">
+    <i class="ri-history-line"></i>
+    <span>历史上的今天</span>
+    <time class="history-today__date"></time>
+  </h2>
+  <ul class="history-today__list"></ul>
+</section>
+
+
+  
+
+  
 
   <article class="articles">
     
@@ -348,6 +363,18 @@
         
       </li>
     </ul>
+    <!-- 访客定位 -->
+    
+    <ul>
+      <li>
+        <span id="site-location" class="site-location" hidden
+              data-weather="true"
+              data-cache-minutes="30">
+          <i class="ri-map-pin-2-line"></i><span class="site-location__text"></span>
+        </span>
+      </li>
+    </ul>
+    
     <!-- 随机句子模块 -->
     
     <ul>
@@ -667,6 +694,13 @@
 
   
 <script src="/js/dz.js"></script>
+
+
+
+<!-- 定位 / 历史上的今天 -->
+
+  
+<script src="/js/site-widgets.js"></script>
 
 
 
