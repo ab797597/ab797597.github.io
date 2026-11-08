@@ -44,12 +44,12 @@ body.post-bg::before {
   left: 0;
   z-index: 0;
   pointer-events: none;
-  background-color: rgba(255,255,255,0.7);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  background-color: rgba(255,255,255,0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 body.post-bg.darkmode::before {
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0.55);
 }
 .page-empty {
   margin: 2rem 0;
