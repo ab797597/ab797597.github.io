@@ -2,10 +2,9 @@
 /**
  * 站点小部件：
  *   1. 访客定位（页脚）：IP 定位城市 + Open-Meteo 天气
- *   2. 历史上的今天（首页卡片）：百度百科公开接口
+ *   2. 历史上的今天（首页卡片）：读取站点内置的 data/history/MM.json
  *
- * 两个功能都只依赖浏览器端请求，不发送任何本站数据；
- * 对应元素不存在或接口失败时保持隐藏，不影响页面其它内容。
+ * 定位与天气为浏览器端请求（失败时隐藏）；历史数据不依赖第三方接口。
  */
 (function () {
   'use strict';
@@ -238,7 +237,10 @@
     function use(items) {
       var list = (items || [])
         .map(function (item) {
-          return { year: item && item.year, title: stripHTML(item && item.title) };
+          return {
+            year: item && (item.y || item.year),
+            title: item && (item.t || stripHTML(item.title))
+          };
         })
         .filter(function (item) { return item.title; })
         .slice(0, max);
@@ -252,16 +254,18 @@
       return;
     }
 
-    fetchJSON('https://baike.baidu.com/cms/home/eventsOnHistory/' + month + '.json')
+    var base = box.getAttribute('data-src') || '/data/history/';
+    if (base.charAt(base.length - 1) !== '/') base += '/';
+
+    fetchJSON(base + month + '.json')
       .then(function (data) {
-        var monthData = data && data[month];
-        var items = monthData && monthData[dateKey];
+        var items = data && data[dateKey];
         if (!items || !items.length) throw new Error('no history data');
         writeCache(cacheKey, { ts: Date.now(), day: dateKey, items: items }, window.sessionStorage);
         use(items);
       })
       .catch(function () {
-        /* 接口不可用时保持隐藏 */
+        /* 数据缺失时保持隐藏 */
       });
   }
 

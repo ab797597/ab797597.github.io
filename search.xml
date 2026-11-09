@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>P4447 [AHOI2018初中组] 分组题解</title>
-    <url>/2026/08/09/P4447-AHOI2018%E5%88%9D%E4%B8%AD%E7%BB%84-%E5%88%86%E7%BB%84%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.luogu.com.cn/record/291620246">AC评测记录</a><br>源码：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">map&lt;<span class="type">int</span>,<span class="type">int</span> &gt;m;</span><br><span class="line"><span class="keyword">typedef</span> map&lt;<span class="type">int</span>,<span class="type">int</span>&gt;::iterator it;</span><br><span class="line"><span class="type">int</span> ans=<span class="number">0x3f3f3f3f</span>,n;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> t;</span><br><span class="line">        cin&gt;&gt;t;</span><br><span class="line">        m[t]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!m.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="type">int</span> t=<span class="number">1</span>;</span><br><span class="line">        it i=m.<span class="built_in">begin</span>(),j=m.<span class="built_in">begin</span>();</span><br><span class="line">        (*i).second--;</span><br><span class="line">        <span class="keyword">for</span>(++j;j!=m.<span class="built_in">end</span>()&amp;&amp;(*j).first==(*i).first<span class="number">+1</span>&amp;&amp;(*j).second&gt;(*i).second;i++,j++)&#123;</span><br><span class="line">            t++;</span><br><span class="line">            (*j).second--;</span><br><span class="line">        &#125;</span><br><span class="line">        i=m.<span class="built_in">begin</span>();</span><br><span class="line">        <span class="keyword">while</span>(i!=m.<span class="built_in">end</span>()&amp;&amp;(*i).second==<span class="number">0</span>)&#123;</span><br><span class="line">            m.<span class="built_in">erase</span>((*i++).first);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(t&lt;ans)&#123;</span><br><span class="line">            ans=t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这道题我们使用了一种形式化的解法，利用map结构自动排序的便利从左到右以画线的方式进行删除，最终求出最大的最小值（不证自明，这里不给出证明）<br>具体来讲：<br><code>(*i).second--;</code>本行默认最左端的值一定会取（这无疑是显然的），故将其键值自减<br><code>for(++j;j!=m.end()&amp;&amp;(*j).first==(*i).first+1&amp;&amp;(*j).second&gt;(*i).second;i++,j++){</code>贪心算法的核心，j先自增以保证能力值不与i相同，最后先后判断：能力值指针未溢出，能力值严格连续，能力值j严格大于能力值i</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(i!=m.<span class="built_in">end</span>()&amp;&amp;(*i).second==<span class="number">0</span>)&#123;</span><br><span class="line">    m.<span class="built_in">erase</span>((*i++).first);</span><br></pre></td></tr></table></figure>
-<p>清除人数为0的能力值，防止再占用（更是为了防止极端情况下的负数人数）</p>
-]]></content>
-      <categories>
-        <category>算法竞赛</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-        <tag>算法</tag>
-        <tag>洛谷</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Foundation 4K</title>
     <url>/2026/10/21/Foundation-4K/</url>
     <content><![CDATA[]]></content>
@@ -54,6 +36,18 @@
       </tags>
   </entry>
   <entry>
+    <title>&lt;Hello!&gt;</title>
+    <url>/2026/07/10/Hello/</url>
+    <content><![CDATA[<h1 id="Hello"><a href="#Hello" class="headerlink" title="Hello!"></a>Hello!</h1><p>你好:) !这里是LightMC的博客，欢迎访问我的页面！<br>页面正在完善中，如果有页面提示暂留或404也是正常的……</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TwilightForest:WitherStorm</title>
     <url>/2026/09/19/TwilightForest-WitherStorm/</url>
     <content><![CDATA[<h1 id="暮色风暴挑战"><a href="#暮色风暴挑战" class="headerlink" title="暮色风暴挑战"></a>暮色风暴挑战</h1><h2 id="我将在三只凋零风暴的追杀下，通关暮色森林并击杀凋零风暴"><a href="#我将在三只凋零风暴的追杀下，通关暮色森林并击杀凋零风暴" class="headerlink" title="我将在三只凋零风暴的追杀下，通关暮色森林并击杀凋零风暴"></a>我将在三只凋零风暴的追杀下，通关暮色森林并击杀凋零风暴</h2><h2 id="以下是详细规则："><a href="#以下是详细规则：" class="headerlink" title="以下是详细规则："></a>以下是详细规则：</h2><ol>
@@ -85,6 +79,37 @@
         <tag>Minecraft</tag>
         <tag>模组</tag>
         <tag>游戏挑战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图论树论基础</title>
+    <url>/2026/10/15/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<h1 id="只是基础"><a href="#只是基础" class="headerlink" title="只是基础"></a>只是基础</h1><h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1>]]></content>
+      <categories>
+        <category>算法竞赛</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>P4447 [AHOI2018初中组] 分组题解</title>
+    <url>/2026/08/09/P4447-AHOI2018%E5%88%9D%E4%B8%AD%E7%BB%84-%E5%88%86%E7%BB%84%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.luogu.com.cn/record/291620246">AC评测记录</a><br>源码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">map&lt;<span class="type">int</span>,<span class="type">int</span> &gt;m;</span><br><span class="line"><span class="keyword">typedef</span> map&lt;<span class="type">int</span>,<span class="type">int</span>&gt;::iterator it;</span><br><span class="line"><span class="type">int</span> ans=<span class="number">0x3f3f3f3f</span>,n;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> t;</span><br><span class="line">        cin&gt;&gt;t;</span><br><span class="line">        m[t]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!m.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="type">int</span> t=<span class="number">1</span>;</span><br><span class="line">        it i=m.<span class="built_in">begin</span>(),j=m.<span class="built_in">begin</span>();</span><br><span class="line">        (*i).second--;</span><br><span class="line">        <span class="keyword">for</span>(++j;j!=m.<span class="built_in">end</span>()&amp;&amp;(*j).first==(*i).first<span class="number">+1</span>&amp;&amp;(*j).second&gt;(*i).second;i++,j++)&#123;</span><br><span class="line">            t++;</span><br><span class="line">            (*j).second--;</span><br><span class="line">        &#125;</span><br><span class="line">        i=m.<span class="built_in">begin</span>();</span><br><span class="line">        <span class="keyword">while</span>(i!=m.<span class="built_in">end</span>()&amp;&amp;(*i).second==<span class="number">0</span>)&#123;</span><br><span class="line">            m.<span class="built_in">erase</span>((*i++).first);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(t&lt;ans)&#123;</span><br><span class="line">            ans=t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这道题我们使用了一种形式化的解法，利用map结构自动排序的便利从左到右以画线的方式进行删除，最终求出最大的最小值（不证自明，这里不给出证明）<br>具体来讲：<br><code>(*i).second--;</code>本行默认最左端的值一定会取（这无疑是显然的），故将其键值自减<br><code>for(++j;j!=m.end()&amp;&amp;(*j).first==(*i).first+1&amp;&amp;(*j).second&gt;(*i).second;i++,j++){</code>贪心算法的核心，j先自增以保证能力值不与i相同，最后先后判断：能力值指针未溢出，能力值严格连续，能力值j严格大于能力值i</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(i!=m.<span class="built_in">end</span>()&amp;&amp;(*i).second==<span class="number">0</span>)&#123;</span><br><span class="line">    m.<span class="built_in">erase</span>((*i++).first);</span><br></pre></td></tr></table></figure>
+<p>清除人数为0的能力值，防止再占用（更是为了防止极端情况下的负数人数）</p>
+]]></content>
+      <categories>
+        <category>算法竞赛</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>题解</tag>
+        <tag>洛谷</tag>
       </tags>
   </entry>
   <entry>
@@ -162,18 +187,6 @@
       </tags>
   </entry>
   <entry>
-    <title>&lt;Hello!&gt;</title>
-    <url>/2026/07/10/Hello/</url>
-    <content><![CDATA[<h1 id="Hello"><a href="#Hello" class="headerlink" title="Hello!"></a>Hello!</h1><p>你好:) !这里是LightMC的博客，欢迎访问我的页面！<br>页面正在完善中，如果有页面提示暂留或404也是正常的……</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>图论树论基础</title>
     <url>/2026/10/15/%E5%9B%BE%E8%AE%BA%E6%A0%91%E8%AE%BA%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><h2 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h2><p><em><strong>你总得会存图，对吧</strong></em></p>
@@ -224,53 +237,9 @@
       </tags>
   </entry>
   <entry>
-    <title>图论树论基础</title>
-    <url>/2026/10/15/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
-    <content><![CDATA[<h1 id="只是基础"><a href="#只是基础" class="headerlink" title="只是基础"></a>只是基础</h1><h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1>]]></content>
-      <categories>
-        <category>算法竞赛</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-        <tag>并查集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>优秀的图片——航天专场</title>
-    <url>/2026/07/11/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/</url>
-    <content><![CDATA[<h1 id="图组"><a href="#图组" class="headerlink" title="图组"></a>图组</h1><h3 id="2001太空漫游"><a href="#2001太空漫游" class="headerlink" title="2001太空漫游"></a>2001太空漫游</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/2001%E5%A4%AA%E7%A9%BA%E6%BC%AB%E6%B8%B8.jpeg" alt="2001太空漫游"></p>
-<h3 id="B747"><a href="#B747" class="headerlink" title="B747"></a>B747</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/B747.jpeg" alt="B747"></p>
-<h3 id="协和逐日"><a href="#协和逐日" class="headerlink" title="协和逐日"></a>协和逐日</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%8D%8F%E5%92%8C%E9%80%90%E6%97%A5.jpeg" alt="协和逐日"></p>
-<h3 id="又是星舰"><a href="#又是星舰" class="headerlink" title="又是星舰"></a>又是星舰</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%8F%88%E6%98%AF%E6%98%9F%E8%88%B0.jpeg" alt="又是星舰"></p>
-<h3 id="各国火箭"><a href="#各国火箭" class="headerlink" title="各国火箭"></a>各国火箭</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%90%84%E5%9B%BD%E7%81%AB%E7%AE%AD.jpeg" alt="各国火箭"></p>
-<h3 id="土星"><a href="#土星" class="headerlink" title="土星"></a>土星</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%9C%9F%E6%98%9F.jpeg" alt="土星"></p>
-<h3 id="土星五号"><a href="#土星五号" class="headerlink" title="土星五号"></a>土星五号</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%9C%9F%E6%98%9F%E4%BA%94%E5%8F%B7.jpeg" alt="土星五号"></p>
-<h3 id="天宫空间站"><a href="#天宫空间站" class="headerlink" title="天宫空间站"></a>天宫空间站</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%A4%A9%E5%AE%AB%E7%A9%BA%E9%97%B4%E7%AB%99.jpeg" alt="天宫空间站"></p>
-<h3 id="星舰"><a href="#星舰" class="headerlink" title="星舰"></a>星舰</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%98%9F%E8%88%B0.jpeg" alt="星舰"></p>
-<h3 id="星舰发射"><a href="#星舰发射" class="headerlink" title="星舰发射"></a>星舰发射</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%98%9F%E8%88%B0%E5%8F%91%E5%B0%84.jpg" alt="星舰发射"></p>
-<h3 id="暗淡蓝点"><a href="#暗淡蓝点" class="headerlink" title="暗淡蓝点"></a>暗淡蓝点</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%9A%97%E6%B7%A1%E8%93%9D%E7%82%B9.jpeg" alt="暗淡蓝点"></p>
-<h3 id="暴风雪号与安-225"><a href="#暴风雪号与安-225" class="headerlink" title="暴风雪号与安-225"></a>暴风雪号与安-225</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%9A%B4%E9%A3%8E%E9%9B%AA%E5%8F%B7%E4%B8%8E%E5%AE%89-225.jpg" alt="暴风雪号与安-225"></p>
-<h3 id="未知型号战斗机"><a href="#未知型号战斗机" class="headerlink" title="未知型号战斗机"></a>未知型号战斗机</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%9C%AA%E7%9F%A5%E5%9E%8B%E5%8F%B7%E6%88%98%E6%96%97%E6%9C%BA.jpeg" alt="未知型号战斗机"></p>
-<h3 id="火箭与月球"><a href="#火箭与月球" class="headerlink" title="火箭与月球"></a>火箭与月球</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E7%81%AB%E7%AE%AD%E4%B8%8E%E6%9C%88%E7%90%83.jpeg" alt="火箭与月球"></p>
-<h3 id="火箭组图"><a href="#火箭组图" class="headerlink" title="火箭组图"></a>火箭组图</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E7%81%AB%E7%AE%AD%E7%BB%84%E5%9B%BE.jpeg" alt="火箭组图"></p>
-<h3 id="空天战机"><a href="#空天战机" class="headerlink" title="空天战机"></a>空天战机</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E7%A9%BA%E5%A4%A9%E6%88%98%E6%9C%BA.jpeg" alt="空天战机"></p>
-<h3 id="蝴蝶状星云"><a href="#蝴蝶状星云" class="headerlink" title="蝴蝶状星云"></a>蝴蝶状星云</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E8%9D%B4%E8%9D%B6%E7%8A%B6%E6%98%9F%E4%BA%91.jpeg" alt="蝴蝶状星云"></p>
-<h3 id="银河系"><a href="#银河系" class="headerlink" title="银河系"></a>银河系</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E9%93%B6%E6%B2%B3%E7%B3%BB.jpeg" alt="银河系"></p>
-<h3 id="阿尔忒尼斯二号乘组"><a href="#阿尔忒尼斯二号乘组" class="headerlink" title="阿尔忒尼斯二号乘组"></a>阿尔忒尼斯二号乘组</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E9%98%BF%E5%B0%94%E5%BF%92%E5%B0%BC%E6%96%AF2%E5%8F%B7%E4%B9%98%E7%BB%84.png" alt="阿尔忒尼斯二号乘组"></p>
-]]></content>
-      <categories>
-        <category>图集</category>
-      </categories>
-      <tags>
-        <tag>图集</tag>
-        <tag>航天</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>欢迎来到新时代</title>
     <url>/2026/11/04/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%96%B0%E6%97%B6%E4%BB%A3/</url>
-    <content><![CDATA[<h1 id="欢迎来到新时代"><a href="#欢迎来到新时代" class="headerlink" title="欢迎来到新时代"></a>欢迎来到新时代</h1><p>大家好，这里是LightMC<br>如你所知，目前我已经处于半退网状态<br>想联系我当然是可以的，给<a href="mailto:&#x61;&#98;&#55;&#x39;&#x37;&#x35;&#57;&#x37;&#64;&#111;&#117;&#116;&#108;&#111;&#111;&#107;&#x2e;&#99;&#111;&#x6d;">ab797597@outlook.com</a>发邮件，我看到了就会回的<br>退网其实是我经过深思熟虑之后的决定，理论上理由应该是为了好好学习天天向上<del>Good Good Study Day Day Up</del>之类的话<br>但真相很简单，我累了<br>我真的很累，心累<br>有的时候都不明白自己到底要去往何方，我向往光明，但是路上的艰难险阻太多，并且其中的一些我还完全无法摆脱<br>为了更快的解决一些不应被称为问题的“问题”，我做出了最武断的决定：切割，退网<br>我从来都很讨厌应试教育，相比之下我更喜欢竞赛，一将功成万骨枯，每个人都知道竞赛红利多，但是呢竞赛的风险也是极大地，毕竟中高考努力可以解决问题，但是竞赛努力解决不了任何问题，努力大概率只能解决你自己：中高考至少有考纲，竞赛的考纲跟没有区别也不大了<br>所以我退网，或许高中不会再打竞赛了，但是这并不代表计算机的梦想就此终结————从算法理论转向应用开发，学习rust，C#等更加现代的语言，将是我未来的目标<br>一直以来的心愿都是能登上NOI的舞台，现在看来是不太可能了，那就改变目标，让我们登上CCPC的舞台！</p>
+    <content><![CDATA[<h1 id="欢迎来到新时代"><a href="#欢迎来到新时代" class="headerlink" title="欢迎来到新时代"></a>欢迎来到新时代</h1><p>大家好，这里是LightMC<br>如你所知，目前我已经处于半退网状态<br>想联系我当然是可以的，给<a href="mailto:&#97;&#98;&#x37;&#x39;&#x37;&#53;&#x39;&#55;&#x40;&#111;&#117;&#116;&#x6c;&#111;&#x6f;&#107;&#46;&#x63;&#111;&#109;">ab797597@outlook.com</a>发邮件，我看到了就会回的<br>退网其实是我经过深思熟虑之后的决定，理论上理由应该是为了好好学习天天向上<del>Good Good Study Day Day Up</del>之类的话<br>但真相很简单，我累了<br>我真的很累，心累<br>有的时候都不明白自己到底要去往何方，我向往光明，但是路上的艰难险阻太多，并且其中的一些我还完全无法摆脱<br>为了更快的解决一些不应被称为问题的“问题”，我做出了最武断的决定：切割，退网<br>我从来都很讨厌应试教育，相比之下我更喜欢竞赛，一将功成万骨枯，每个人都知道竞赛红利多，但是呢竞赛的风险也是极大地，毕竟中高考努力可以解决问题，但是竞赛努力解决不了任何问题，努力大概率只能解决你自己：中高考至少有考纲，竞赛的考纲跟没有区别也不大了<br>所以我退网，或许高中不会再打竞赛了，但是这并不代表计算机的梦想就此终结————从算法理论转向应用开发，学习rust，C#等更加现代的语言，将是我未来的目标<br>一直以来的心愿都是能登上NOI的舞台，现在看来是不太可能了，那就改变目标，让我们登上CCPC的舞台！</p>
 <h1 id="And-more"><a href="#And-more" class="headerlink" title="And more..?"></a>And more..?</h1><p>理论之美是难以言喻的<br>学习数物化（生物你给我出去！）一直以来是我的消遣<br>AI冲击数学的消息我不是没有了解，甚至可能比看到文章的各位更早了解到<br>我们其实什么都知道，我们只是不愿意真正去面对<br>了解到邓煜博士之后（他拿菲奖之后），我才真正意识到了一些事情：我并不是有病，看百合没有错，LGBT也没有错，或者说真正错了的，是那颗从来都放不下偏见的心<br>我为什么要看百合？可能就只是因为我太缺爱了，或者是我太孤傲了（？），其实对于我来讲，百合更多是一种心里的慰藉，毕竟两个女孩子可以放下世俗偏见只为了喜欢来谈一场恋爱也是很好的（要是我也是女孩子就好了？）</p>
 <h1 id="一个并不明确的Title"><a href="#一个并不明确的Title" class="headerlink" title="一个并不明确的Title"></a>一个并不明确的Title</h1><p>挺感谢一路陪我走来的朋友们的（跟某某中学一点关系都没有，考上高中之后我将与他再无瓜葛，我回去我就是狗），他们大多与我志同道合，也有和我的共同话题，机构更多是一个跳板，在机构我认识了更多真正意义上的“天才”，他们的天资比我强上太多了，太多太多了，那除了仰望我们还能做什么呢？</p>
 <p>追上去<br>快一点，再快一点<br>扩大知识容量，代价是每一个门类都浅尝辄止，遇到真正感兴趣的深入钻研，这是cmb大佬教我的道理（前NOI国金，现就读于清华大学交叉信息研究院计算机科学实验班）<br>我真的去试了<br>真的有用。。吗？<br>只能说对我有用，对于大部分人都是没用的，以深度为代价换取的广度是具有极大危害性的，最直接显著的例子就是把知识点记混，对其他知识体系来说，这就是毁灭性打击</p>
@@ -360,6 +329,37 @@
       <tags>
         <tag>随笔</tag>
         <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>优秀的图片——航天专场</title>
+    <url>/2026/07/11/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/</url>
+    <content><![CDATA[<h1 id="图组"><a href="#图组" class="headerlink" title="图组"></a>图组</h1><h3 id="2001太空漫游"><a href="#2001太空漫游" class="headerlink" title="2001太空漫游"></a>2001太空漫游</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/2001%E5%A4%AA%E7%A9%BA%E6%BC%AB%E6%B8%B8.jpeg" alt="2001太空漫游"></p>
+<h3 id="B747"><a href="#B747" class="headerlink" title="B747"></a>B747</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/B747.jpeg" alt="B747"></p>
+<h3 id="协和逐日"><a href="#协和逐日" class="headerlink" title="协和逐日"></a>协和逐日</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%8D%8F%E5%92%8C%E9%80%90%E6%97%A5.jpeg" alt="协和逐日"></p>
+<h3 id="又是星舰"><a href="#又是星舰" class="headerlink" title="又是星舰"></a>又是星舰</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%8F%88%E6%98%AF%E6%98%9F%E8%88%B0.jpeg" alt="又是星舰"></p>
+<h3 id="各国火箭"><a href="#各国火箭" class="headerlink" title="各国火箭"></a>各国火箭</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%90%84%E5%9B%BD%E7%81%AB%E7%AE%AD.jpeg" alt="各国火箭"></p>
+<h3 id="土星"><a href="#土星" class="headerlink" title="土星"></a>土星</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%9C%9F%E6%98%9F.jpeg" alt="土星"></p>
+<h3 id="土星五号"><a href="#土星五号" class="headerlink" title="土星五号"></a>土星五号</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%9C%9F%E6%98%9F%E4%BA%94%E5%8F%B7.jpeg" alt="土星五号"></p>
+<h3 id="天宫空间站"><a href="#天宫空间站" class="headerlink" title="天宫空间站"></a>天宫空间站</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%A4%A9%E5%AE%AB%E7%A9%BA%E9%97%B4%E7%AB%99.jpeg" alt="天宫空间站"></p>
+<h3 id="星舰"><a href="#星舰" class="headerlink" title="星舰"></a>星舰</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%98%9F%E8%88%B0.jpeg" alt="星舰"></p>
+<h3 id="星舰发射"><a href="#星舰发射" class="headerlink" title="星舰发射"></a>星舰发射</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%98%9F%E8%88%B0%E5%8F%91%E5%B0%84.jpg" alt="星舰发射"></p>
+<h3 id="暗淡蓝点"><a href="#暗淡蓝点" class="headerlink" title="暗淡蓝点"></a>暗淡蓝点</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%9A%97%E6%B7%A1%E8%93%9D%E7%82%B9.jpeg" alt="暗淡蓝点"></p>
+<h3 id="暴风雪号与安-225"><a href="#暴风雪号与安-225" class="headerlink" title="暴风雪号与安-225"></a>暴风雪号与安-225</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%9A%B4%E9%A3%8E%E9%9B%AA%E5%8F%B7%E4%B8%8E%E5%AE%89-225.jpg" alt="暴风雪号与安-225"></p>
+<h3 id="未知型号战斗机"><a href="#未知型号战斗机" class="headerlink" title="未知型号战斗机"></a>未知型号战斗机</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E6%9C%AA%E7%9F%A5%E5%9E%8B%E5%8F%B7%E6%88%98%E6%96%97%E6%9C%BA.jpeg" alt="未知型号战斗机"></p>
+<h3 id="火箭与月球"><a href="#火箭与月球" class="headerlink" title="火箭与月球"></a>火箭与月球</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E7%81%AB%E7%AE%AD%E4%B8%8E%E6%9C%88%E7%90%83.jpeg" alt="火箭与月球"></p>
+<h3 id="火箭组图"><a href="#火箭组图" class="headerlink" title="火箭组图"></a>火箭组图</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E7%81%AB%E7%AE%AD%E7%BB%84%E5%9B%BE.jpeg" alt="火箭组图"></p>
+<h3 id="空天战机"><a href="#空天战机" class="headerlink" title="空天战机"></a>空天战机</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E7%A9%BA%E5%A4%A9%E6%88%98%E6%9C%BA.jpeg" alt="空天战机"></p>
+<h3 id="蝴蝶状星云"><a href="#蝴蝶状星云" class="headerlink" title="蝴蝶状星云"></a>蝴蝶状星云</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E8%9D%B4%E8%9D%B6%E7%8A%B6%E6%98%9F%E4%BA%91.jpeg" alt="蝴蝶状星云"></p>
+<h3 id="银河系"><a href="#银河系" class="headerlink" title="银河系"></a>银河系</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E9%93%B6%E6%B2%B3%E7%B3%BB.jpeg" alt="银河系"></p>
+<h3 id="阿尔忒尼斯二号乘组"><a href="#阿尔忒尼斯二号乘组" class="headerlink" title="阿尔忒尼斯二号乘组"></a>阿尔忒尼斯二号乘组</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E9%98%BF%E5%B0%94%E5%BF%92%E5%B0%BC%E6%96%AF2%E5%8F%B7%E4%B9%98%E7%BB%84.png" alt="阿尔忒尼斯二号乘组"></p>
+]]></content>
+      <categories>
+        <category>图集</category>
+      </categories>
+      <tags>
+        <tag>图集</tag>
+        <tag>航天</tag>
       </tags>
   </entry>
   <entry>
