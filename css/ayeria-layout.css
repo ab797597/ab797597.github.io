@@ -119,6 +119,13 @@ body.post-bg.darkmode::before {
 .site-location i {
   font-size: 1.4rem;
 }
+.article-preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
 @media (max-width: 768px) {
   .history-today {
     padding: 1.2rem 1.4rem;
