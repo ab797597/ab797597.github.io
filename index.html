@@ -47,12 +47,93 @@
       
       <script src="/js/random-sentences.js"></script>
       
+
+      <!-- 首页开场过渡（纯白背景 + 文字快速闪过） -->
+      
+      <script>
+        try {
+          if (sessionStorage.getItem('ayeria-intro-played')) {
+            document.documentElement.className += ' intro-skip';
+          }
+        } catch (e) {}
+      </script>
+      <style>
+        #intro {
+          position: fixed;
+          inset: 0;
+          z-index: 100000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          background: #fff;
+          animation: intro-overlay 1.5s ease-in-out forwards;
+        }
+        #intro .intro-text {
+          font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
+          font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: 0.03em;
+          white-space: nowrap;
+          color: #000;
+          opacity: 0;
+          will-change: transform, opacity;
+          animation: intro-text 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes intro-text {
+          0%   { transform: translate3d(-70vw, 55vh, 0) scale(0.9); opacity: 0; }
+          28%  { transform: translate3d(-18vw, 0, 0) scale(1); opacity: 1; }
+          52%  { transform: translate3d(0, 0, 0) scale(1.06); opacity: 1; }
+          100% { transform: translate3d(72vw, -6vh, 0) scale(1); opacity: 0; }
+        }
+        @keyframes intro-overlay {
+          0%, 68% { opacity: 1; }
+          100% { opacity: 0; visibility: hidden; }
+        }
+        .intro-skip #intro { display: none !important; }
+        @media (prefers-reduced-motion: reduce) {
+          #intro { display: none !important; }
+        }
+      </style>
+      
     <link rel="alternate" href="/atom.xml" title="LightMC LightMinecraft" type="application/atom+xml">
 </head>
 
 
 
 <body class="darkmode post-bg">
+  
+<div id="intro" aria-hidden="true">
+  <div class="intro-text">LightMinecraft</div>
+</div>
+<script>
+  (function () {
+    var el = document.getElementById('intro');
+    if (!el) return;
+
+    var KEY = 'ayeria-intro-played';
+    var skipped = document.documentElement.className.indexOf('intro-skip') !== -1;
+
+    function finish() {
+      try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+      if (el.parentNode) el.parentNode.removeChild(el);
+    }
+
+    if (skipped) {
+      if (el.parentNode) el.parentNode.removeChild(el);
+      return;
+    }
+
+    el.addEventListener('animationend', function (ev) {
+      if (ev.animationName === 'intro-overlay') finish();
+    });
+
+    setTimeout(finish, 2000);
+  })();
+</script>
+
+
   <div id="app">
     
     
