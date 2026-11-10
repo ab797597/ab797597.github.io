@@ -48,7 +48,7 @@
       <script src="/js/random-sentences.js"></script>
       
 
-      <!-- 首页开场过渡（纯白背景 + 文字快速闪过） -->
+      <!-- 首页开场过渡（纯白背景 + 文字逐字淡入） -->
       
       <script>
         try {
@@ -67,7 +67,7 @@
           justify-content: center;
           overflow: hidden;
           background: #fff;
-          animation: intro-overlay 1.5s ease-in-out forwards;
+          animation: intro-overlay 1.7s ease-in-out forwards;
         }
         #intro .intro-text {
           font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
@@ -75,20 +75,27 @@
           font-weight: 700;
           line-height: 1;
           letter-spacing: 0.03em;
-          white-space: nowrap;
+          white-space: pre;
           color: #000;
-          opacity: 0;
-          will-change: transform, opacity;
-          animation: intro-text 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: intro-text-out 0.35s ease forwards;
+          animation-delay: 1.3s;
         }
-        @keyframes intro-text {
-          0%   { transform: translate3d(-70vw, 55vh, 0) scale(0.9); opacity: 0; }
-          28%  { transform: translate3d(-18vw, 0, 0) scale(1); opacity: 1; }
-          52%  { transform: translate3d(0, 0, 0) scale(1.06); opacity: 1; }
-          100% { transform: translate3d(72vw, -6vh, 0) scale(1); opacity: 0; }
+        /* 每个字独立淡入，文字整体始终固定在正中 */
+        #intro .intro-text span {
+          display: inline-block;
+          opacity: 0;
+          animation: intro-char 0.38s ease forwards;
+          will-change: opacity;
+        }
+        @keyframes intro-char {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes intro-text-out {
+          to { opacity: 0; }
         }
         @keyframes intro-overlay {
-          0%, 68% { opacity: 1; }
+          0%, 76% { opacity: 1; }
           100% { opacity: 0; visibility: hidden; }
         }
         .intro-skip #intro { display: none !important; }
@@ -104,8 +111,9 @@
 
 <body class="darkmode post-bg">
   
+
 <div id="intro" aria-hidden="true">
-  <div class="intro-text">LightMinecraft</div>
+  <div class="intro-text"><span style="animation-delay:100ms">L</span><span style="animation-delay:155ms">i</span><span style="animation-delay:210ms">g</span><span style="animation-delay:265ms">h</span><span style="animation-delay:320ms">t</span><span style="animation-delay:375ms">M</span><span style="animation-delay:430ms">i</span><span style="animation-delay:485ms">n</span><span style="animation-delay:540ms">e</span><span style="animation-delay:595ms">c</span><span style="animation-delay:650ms">r</span><span style="animation-delay:705ms">a</span><span style="animation-delay:760ms">f</span><span style="animation-delay:815ms">t</span></div>
 </div>
 <script>
   (function () {
@@ -129,7 +137,7 @@
       if (ev.animationName === 'intro-overlay') finish();
     });
 
-    setTimeout(finish, 2000);
+    setTimeout(finish, 2500);
   })();
 </script>
 
