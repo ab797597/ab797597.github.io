@@ -55,7 +55,7 @@
 
 
 
-<body class="darkmode post-bg">
+<body>
   
 
   <div id="app">
@@ -64,6 +64,96 @@
       <canvas class="click-effect-canvas" width="1777" height="841"></canvas>
     
     <main class="content on">
+      <header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="/">
+      
+      <img src="/favicon.svg" alt="LightMC LightMinecraft" />
+      
+      <span>LightMC</span>
+    </a>
+
+    <button type="button" class="topbar__toggle" aria-label="菜单" aria-expanded="false">
+      <i class="ri-menu-line"></i>
+    </button>
+
+    <nav class="topbar__nav">
+      
+      <a class="topbar__link" href="/"
+        >主页</a>
+      
+      <a class="topbar__link" href="/archives"
+        >全部文章</a>
+      
+      <a class="topbar__link" href="/categories"
+        >文章分类</a>
+      
+      <a class="topbar__link" href="/tags"
+        >全部标签</a>
+      
+      <a class="topbar__link" href="/friends"
+        >友情链接</a>
+      
+      <a class="topbar__link" href="/about"
+        >关于本站</a>
+      
+      
+      <a class="topbar__icon nav-item-search" role="button" tabindex="0" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+    </nav>
+  </div>
+</header>
+
+      <div class="search-form-wrap"><div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div></div>
+      <aside class="widget-rail">
+        <section class="profile-card">
+  <div class="profile-card__avatar">
+    <img src="/favicon.svg"
+      alt="LightMC" />
+  </div>
+  <h2 class="profile-card__name">LightMC</h2>
+  
+  <p class="profile-card__desc">LightMC的博客</p>
+  
+  <ul class="profile-card__stats">
+    <li><strong>17</strong><span>标签</span></li>
+    <li><strong>5</strong><span>分类</span></li>
+    <li><strong>12</strong><span>文章</span></li>
+  </ul>
+</section>
+
+        
+<section id="history-today" class="history-today" hidden
+  data-max="5"
+  data-src="/data/history/">
+  <h2 class="history-today__title">
+    <i class="ri-history-line"></i>
+    <span>历史上的今天</span>
+    <time class="history-today__date"></time>
+  </h2>
+  <ul class="history-today__list"></ul>
+</section>
+
+
+        
+<section id="site-location" class="side-widget side-location" hidden
+  data-weather="true"
+  data-cache-minutes="30">
+  <h3 class="side-widget__title">
+    <i class="ri-map-pin-2-line"></i>
+    <span>位置 · 天气</span>
+  </h3>
+  <p class="side-location__city">定位中…</p>
+  <p class="side-location__weather"></p>
+</section>
+
+
+      </aside>
       <section class="outer">
   <article
   id="post-优秀的图片——航天专场"
@@ -72,7 +162,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -122,25 +211,13 @@
     
 
     
-      
-    <div class="tocbot"></div>
-
-
-
-
-
-    
 
     
     <div class="article-entry" itemprop="articleBody">
       
       
-      
 
-      
-
-      
-        <h1 id="图组"><a href="#图组" class="headerlink" title="图组"></a>图组</h1><h3 id="2001太空漫游"><a href="#2001太空漫游" class="headerlink" title="2001太空漫游"></a>2001太空漫游</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/2001%E5%A4%AA%E7%A9%BA%E6%BC%AB%E6%B8%B8.jpeg" alt="2001太空漫游"></p>
+      <h1 id="图组"><a href="#图组" class="headerlink" title="图组"></a>图组</h1><h3 id="2001太空漫游"><a href="#2001太空漫游" class="headerlink" title="2001太空漫游"></a>2001太空漫游</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/2001%E5%A4%AA%E7%A9%BA%E6%BC%AB%E6%B8%B8.jpeg" alt="2001太空漫游"></p>
 <h3 id="B747"><a href="#B747" class="headerlink" title="B747"></a>B747</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/B747.jpeg" alt="B747"></p>
 <h3 id="协和逐日"><a href="#协和逐日" class="headerlink" title="协和逐日"></a>协和逐日</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%8D%8F%E5%92%8C%E9%80%90%E6%97%A5.jpeg" alt="协和逐日"></p>
 <h3 id="又是星舰"><a href="#又是星舰" class="headerlink" title="又是星舰"></a>又是星舰</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E5%8F%88%E6%98%AF%E6%98%9F%E8%88%B0.jpeg" alt="又是星舰"></p>
@@ -160,7 +237,6 @@
 <h3 id="银河系"><a href="#银河系" class="headerlink" title="银河系"></a>银河系</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E9%93%B6%E6%B2%B3%E7%B3%BB.jpeg" alt="银河系"></p>
 <h3 id="阿尔忒尼斯二号乘组"><a href="#阿尔忒尼斯二号乘组" class="headerlink" title="阿尔忒尼斯二号乘组"></a>阿尔忒尼斯二号乘组</h3><p><img src="/images/%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E7%89%87%E2%80%94%E2%80%94%E8%88%AA%E5%A4%A9%E4%B8%93%E5%9C%BA/%E9%98%BF%E5%B0%94%E5%BF%92%E5%B0%BC%E6%96%AF2%E5%8F%B7%E4%B9%98%E7%BB%84.png" alt="阿尔忒尼斯二号乘组"></p>
 
-      
 
       <!-- reward -->
       
@@ -315,18 +391,6 @@
         
       </li>
     </ul>
-    <!-- 访客定位 -->
-    
-    <ul>
-      <li>
-        <span id="site-location" class="site-location" hidden
-              data-weather="true"
-              data-cache-minutes="30">
-          <i class="ri-map-pin-2-line"></i><span class="site-location__text"></span>
-        </span>
-      </li>
-    </ul>
-    
     <!-- 随机句子模块 -->
     
     <ul>
@@ -344,84 +408,7 @@
   <i class="ri-arrow-up-line"></i>
 </div>
 
-<div class="float-btn todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
-
     </div>
-    <aside class="sidebar on">
-      <button class="float-btn navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/favicon.svg" alt="LightMC LightMinecraft"></a>
-  </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/"
-         
-      >主页</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/archives"
-         
-      >全部文章</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/categories"
-         
-      >文章分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/tags"
-         
-      >全部标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/friends"
-         
-      >友情链接</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/about"
-         
-      >关于本站</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="Search">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
     <div id="mask"></div>
 
 
@@ -434,23 +421,6 @@
 
 
 <!-- Tocbot -->
-
-  
-<script src="/js/tocbot.min.js"></script>
-
-  <script>
-    tocbot.init({
-      tocSelector: ".tocbot",
-      contentSelector: ".article-entry",
-      headingSelector: "h1, h2, h3, h4, h5, h6",
-      hasInnerContainers: true,
-      scrollSmooth: true,
-      scrollContainer: "main",
-      positionFixedSelector: ".tocbot",
-      positionFixedClass: "is-position-fixed",
-      fixedSidebarOffset: "auto",
-    });
-  </script>
 
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
@@ -661,10 +631,6 @@
 
 <!-- CanvasBackground -->
 
-  
-<script src="/js/dz.js"></script>
-
-
 
 <!-- 定位 / 历史上的今天 -->
 
@@ -681,22 +647,19 @@
 
 
     
-    <div id="music">
     
-    
-    
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=2653011467&auto=1&height=32"></iframe>
+
+<div id="music" class="music-widget">
+  <div class="music-panel" hidden>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86"
+      data-src="//music.163.com/outchain/player?type=2&amp;id=2653011467&amp;auto=1&amp;height=66" title="网易云音乐播放器"></iframe>
+  </div>
+  <button type="button" class="music-toggle" aria-label="网易云音乐" aria-expanded="false" title="网易云音乐">
+    <i class="ri-music-2-line"></i>
+  </button>
 </div>
 
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
+
     
     
 

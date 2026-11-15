@@ -47,7 +47,8 @@
    * ------------------------------------------------------------------ */
 
   var locationEl = document.getElementById('site-location');
-  var locationTextEl = locationEl && locationEl.querySelector('.site-location__text');
+  var locationCityEl = locationEl && locationEl.querySelector('.side-location__city');
+  var locationWeatherEl = locationEl && locationEl.querySelector('.side-location__weather');
 
   // WMO weather code -> 中文描述
   var WEATHER_TEXT = {
@@ -64,20 +65,22 @@
   };
 
   function renderLocation(info, weather) {
-    if (!locationEl || !locationTextEl) return;
+    if (!locationEl || !locationCityEl) return;
 
-    var parts = [];
-    if (info.city) parts.push(info.city);
-    else if (info.region) parts.push(info.region);
-    else if (info.country) parts.push(info.country);
-    if (!parts.length) return;
+    var city = info.city || info.region || info.country;
+    if (!city) return;
 
-    if (weather && typeof weather.temperature_2m === 'number') {
-      var desc = WEATHER_TEXT[weather.weather_code] || '';
-      parts.push((desc ? desc + ' ' : '') + Math.round(weather.temperature_2m) + '°C');
+    locationCityEl.textContent = city;
+
+    if (locationWeatherEl) {
+      if (weather && typeof weather.temperature_2m === 'number') {
+        var desc = WEATHER_TEXT[weather.weather_code] || '';
+        locationWeatherEl.textContent = (desc ? desc + ' · ' : '') + Math.round(weather.temperature_2m) + '°C';
+      } else {
+        locationWeatherEl.textContent = '';
+      }
     }
 
-    locationTextEl.textContent = parts.join(' · ');
     var tip = [info.region, info.country].filter(Boolean).join('，');
     if (tip) locationEl.title = tip;
     locationEl.hidden = false;
@@ -269,6 +272,69 @@
       });
   }
 
+  /* ------------------------------------------------------------------
+   * 网易云音乐：右下角小按钮
+   * ------------------------------------------------------------------ */
+
+  function initMusic() {
+    var root = document.getElementById('music');
+    if (!root) return;
+
+    var button = root.querySelector('.music-toggle');
+    var panel = root.querySelector('.music-panel');
+    var frame = root.querySelector('iframe');
+    if (!button || !panel || !frame) return;
+
+    function open() {
+      if (!frame.getAttribute('src')) {
+        frame.setAttribute('src', frame.getAttribute('data-src') || '');
+      }
+      panel.hidden = false;
+      root.classList.add('is-open');
+      button.setAttribute('aria-expanded', 'true');
+    }
+
+    function close() {
+      panel.hidden = true;
+      root.classList.remove('is-open');
+      button.setAttribute('aria-expanded', 'false');
+    }
+
+    button.addEventListener('click', function () {
+      if (panel.hidden) open();
+      else close();
+    });
+
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && !panel.hidden) close();
+    });
+  }
+
+  function initTopbar() {
+    var bar = document.querySelector('.topbar');
+    if (!bar) return;
+
+    var toggle = bar.querySelector('.topbar__toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', function () {
+      var open = bar.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
   initLocation();
   initHistory();
+
+  // 音乐组件在 after-footer 之后才会输出，等 DOM 解析完成再初始化
+  function initDom() {
+    initMusic();
+    initTopbar();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDom);
+  } else {
+    initDom();
+  }
 })();

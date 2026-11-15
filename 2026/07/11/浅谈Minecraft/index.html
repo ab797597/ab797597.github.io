@@ -55,7 +55,7 @@
 
 
 
-<body class="darkmode post-bg">
+<body>
   
 
   <div id="app">
@@ -64,6 +64,96 @@
       <canvas class="click-effect-canvas" width="1777" height="841"></canvas>
     
     <main class="content on">
+      <header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="/">
+      
+      <img src="/favicon.svg" alt="LightMC LightMinecraft" />
+      
+      <span>LightMC</span>
+    </a>
+
+    <button type="button" class="topbar__toggle" aria-label="菜单" aria-expanded="false">
+      <i class="ri-menu-line"></i>
+    </button>
+
+    <nav class="topbar__nav">
+      
+      <a class="topbar__link" href="/"
+        >主页</a>
+      
+      <a class="topbar__link" href="/archives"
+        >全部文章</a>
+      
+      <a class="topbar__link" href="/categories"
+        >文章分类</a>
+      
+      <a class="topbar__link" href="/tags"
+        >全部标签</a>
+      
+      <a class="topbar__link" href="/friends"
+        >友情链接</a>
+      
+      <a class="topbar__link" href="/about"
+        >关于本站</a>
+      
+      
+      <a class="topbar__icon nav-item-search" role="button" tabindex="0" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+    </nav>
+  </div>
+</header>
+
+      <div class="search-form-wrap"><div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div></div>
+      <aside class="widget-rail">
+        <section class="profile-card">
+  <div class="profile-card__avatar">
+    <img src="/favicon.svg"
+      alt="LightMC" />
+  </div>
+  <h2 class="profile-card__name">LightMC</h2>
+  
+  <p class="profile-card__desc">LightMC的博客</p>
+  
+  <ul class="profile-card__stats">
+    <li><strong>17</strong><span>标签</span></li>
+    <li><strong>5</strong><span>分类</span></li>
+    <li><strong>12</strong><span>文章</span></li>
+  </ul>
+</section>
+
+        
+<section id="history-today" class="history-today" hidden
+  data-max="5"
+  data-src="/data/history/">
+  <h2 class="history-today__title">
+    <i class="ri-history-line"></i>
+    <span>历史上的今天</span>
+    <time class="history-today__date"></time>
+  </h2>
+  <ul class="history-today__list"></ul>
+</section>
+
+
+        
+<section id="site-location" class="side-widget side-location" hidden
+  data-weather="true"
+  data-cache-minutes="30">
+  <h3 class="side-widget__title">
+    <i class="ri-map-pin-2-line"></i>
+    <span>位置 · 天气</span>
+  </h3>
+  <p class="side-location__city">定位中…</p>
+  <p class="side-location__weather"></p>
+</section>
+
+
+      </aside>
       <section class="outer">
   <article
   id="post-浅谈Minecraft"
@@ -72,7 +162,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -122,25 +211,13 @@
     
 
     
-      
-    <div class="tocbot"></div>
-
-
-
-
-
-    
 
     
     <div class="article-entry" itemprop="articleBody">
       
       
-      
 
-      
-
-      
-        <h1 id="浅谈Minecraft-致我的10年Minecraft时光"><a href="#浅谈Minecraft-致我的10年Minecraft时光" class="headerlink" title="浅谈Minecraft 致我的10年Minecraft时光"></a>浅谈Minecraft 致我的10年Minecraft时光</h1><h2 id="上篇-经历"><a href="#上篇-经历" class="headerlink" title="上篇 经历"></a>上篇 经历</h2><h3 id="第一阶段-4-8岁"><a href="#第一阶段-4-8岁" class="headerlink" title="第一阶段 4~8岁"></a>第一阶段 4~8岁</h3><p>那个时候还在玩迷你世界，也正值互联网一战爆发，我也参与了其中。最开始也是坚定的支持迷你世界，后来了解到MC才是正统，转头直接“弃暗投明”，转战MC。中间还当了一段时间两面派，即既支持MC又支持迷你，主张两边和平共同发展，然后不出所料，也是被骂了好吧。<br></p>
+      <h1 id="浅谈Minecraft-致我的10年Minecraft时光"><a href="#浅谈Minecraft-致我的10年Minecraft时光" class="headerlink" title="浅谈Minecraft 致我的10年Minecraft时光"></a>浅谈Minecraft 致我的10年Minecraft时光</h1><h2 id="上篇-经历"><a href="#上篇-经历" class="headerlink" title="上篇 经历"></a>上篇 经历</h2><h3 id="第一阶段-4-8岁"><a href="#第一阶段-4-8岁" class="headerlink" title="第一阶段 4~8岁"></a>第一阶段 4~8岁</h3><p>那个时候还在玩迷你世界，也正值互联网一战爆发，我也参与了其中。最开始也是坚定的支持迷你世界，后来了解到MC才是正统，转头直接“弃暗投明”，转战MC。中间还当了一段时间两面派，即既支持MC又支持迷你，主张两边和平共同发展，然后不出所料，也是被骂了好吧。<br></p>
 <h3 id="第二阶段-8岁-2022年"><a href="#第二阶段-8岁-2022年" class="headerlink" title="第二阶段 8岁~2022年"></a>第二阶段 8岁~2022年</h3><p>由于要学编程，我爸给我配了电脑，剧情开始反转。<br><br>我第一次接触了Java版MC，再也不用受那个神人网易的恶心，也体验了JAVA版那难以置信的自由度，正所谓喜新厌旧，扔掉网易账号直接不玩了。<br><br>同时还有一个支线，——骂迷你。当时“一战”正酣，我和我的一个朋友每天放学第一件事就是在回家的路上控诉迷你有多么多么烂，多么多么能抄，玩家素质有多么多么低下。<br><br>2022年11 月 30 日，据广东省高级人民法院消息，广东省高级人民法院对广州网易公司、上海网之易公司诉深圳迷你玩公司著作权侵权及不正当竞争纠纷案作出终审判决，认定深圳迷你玩公司构成不正当竞争，判令其删除游戏中 230 个侵权元素，并赔偿网易公司 5000 万元。据了解，这是国内游戏侵权纠纷案件最高判赔数额。2017 年 8 月 15 日，网易以涉嫌抄袭其代理的游戏《我的世界》为由对迷你玩发出维权函，并要求进行删除下架处理。2018 年至 2021 年间，网易和迷你玩多次对簿公堂，至此，持续近四年的中国沙盒游戏纠纷案尘埃落定。<br><br>一战结束了，什么都结束了。大家狂欢了一段时间，后来这件事也就不了了之了。<br></p>
 <h3 id="第三阶段-2023年至今"><a href="#第三阶段-2023年至今" class="headerlink" title="第三阶段 2023年至今"></a>第三阶段 2023年至今</h3><p>我父亲给我换了台新电脑（后话，应该在2024年年底换的），用上4080S了，曾经那些打不开的整合包，那些跑不动的光影，终于能打开了，并且游刃有余。我也更加深度的体验了各种游戏内容，可是，然后呢？<br>太空虚了，说实话，体验完一点刺激感都没有，那种新奇，早就在数年，甚至说十年的时间中消磨殆尽了。于是，我下载了GTNH，准备用几年时间专心玩这一个整合。<br></p>
 <h2 id="下篇-About-Minecraft-Editions"><a href="#下篇-About-Minecraft-Editions" class="headerlink" title="下篇 About Minecraft Editions"></a>下篇 About Minecraft Editions</h2><h3 id="1-7-10"><a href="#1-7-10" class="headerlink" title="1.7.10"></a>1.7.10</h3><p>让我们从1.7.10开始。<br><br>1.7.10，第一个模组大爆发的版本。<br><br>起因是因为Mojang在1.7这一个大版本中更了10个小版本，导致玩家社区对新内容的需求暴增，于是模组社区便开始蓬勃发展。像我们所熟知的等价交换，无尽贪婪，匠魂，虚无世界，拔刀剑，暮色森林等老牌模组都是这个时期的产物，这些模组也构成了我们的回忆（至少是我的）。<br></p>
@@ -155,7 +232,6 @@
 <h3 id="1-20"><a href="#1-20" class="headerlink" title="1.20"></a>1.20</h3><p><del>洞穴与山崖Part4</del>足迹与故事。加入了考古（<del>不是重点</del>）和樱花树林（<del>这个很重要</del>），1.20.4与1.20.1都是模组大爆发的版本，总体上是Fabric蓬勃发展，元素周期表那一套对游戏的优化是真可以。<br></p>
 <h3 id="1-21"><a href="#1-21" class="headerlink" title="1.21"></a>1.21</h3><p><del>洞穴与山崖Part5</del>棘巧试炼。加入试炼大厅<del>和涂蜡的氧化切制铜楼梯</del>和乐魂（肯定还有其他东西），1.21.4还把刷线机修了（这个倒没毛病，这玩意太逆天了），1.21.1又有很多新模组，比如航空学，瓦基（这个应该要早一点），还有一大票老模组复活，真的让人热泪盈眶啊。小乐魂是真可爱，大乐魂有点用但不多，主要是可以高空作业了（<del>乐魂战除外</del>）。<br></p>
 
-      
 
       <!-- reward -->
       
@@ -310,18 +386,6 @@
         
       </li>
     </ul>
-    <!-- 访客定位 -->
-    
-    <ul>
-      <li>
-        <span id="site-location" class="site-location" hidden
-              data-weather="true"
-              data-cache-minutes="30">
-          <i class="ri-map-pin-2-line"></i><span class="site-location__text"></span>
-        </span>
-      </li>
-    </ul>
-    
     <!-- 随机句子模块 -->
     
     <ul>
@@ -339,84 +403,7 @@
   <i class="ri-arrow-up-line"></i>
 </div>
 
-<div class="float-btn todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
-
     </div>
-    <aside class="sidebar on">
-      <button class="float-btn navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/favicon.svg" alt="LightMC LightMinecraft"></a>
-  </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/"
-         
-      >主页</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/archives"
-         
-      >全部文章</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/categories"
-         
-      >文章分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/tags"
-         
-      >全部标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/friends"
-         
-      >友情链接</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/about"
-         
-      >关于本站</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="Search">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
     <div id="mask"></div>
 
 
@@ -429,23 +416,6 @@
 
 
 <!-- Tocbot -->
-
-  
-<script src="/js/tocbot.min.js"></script>
-
-  <script>
-    tocbot.init({
-      tocSelector: ".tocbot",
-      contentSelector: ".article-entry",
-      headingSelector: "h1, h2, h3, h4, h5, h6",
-      hasInnerContainers: true,
-      scrollSmooth: true,
-      scrollContainer: "main",
-      positionFixedSelector: ".tocbot",
-      positionFixedClass: "is-position-fixed",
-      fixedSidebarOffset: "auto",
-    });
-  </script>
 
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
@@ -656,10 +626,6 @@
 
 <!-- CanvasBackground -->
 
-  
-<script src="/js/dz.js"></script>
-
-
 
 <!-- 定位 / 历史上的今天 -->
 
@@ -676,22 +642,19 @@
 
 
     
-    <div id="music">
     
-    
-    
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=2653011467&auto=1&height=32"></iframe>
+
+<div id="music" class="music-widget">
+  <div class="music-panel" hidden>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86"
+      data-src="//music.163.com/outchain/player?type=2&amp;id=2653011467&amp;auto=1&amp;height=66" title="网易云音乐播放器"></iframe>
+  </div>
+  <button type="button" class="music-toggle" aria-label="网易云音乐" aria-expanded="false" title="网易云音乐">
+    <i class="ri-music-2-line"></i>
+  </button>
 </div>
 
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
+
     
     
 

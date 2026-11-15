@@ -111,7 +111,7 @@
 
 
 
-<body class="darkmode post-bg">
+<body>
   
 
 <div id="intro" aria-hidden="true">
@@ -150,48 +150,98 @@
       <canvas class="click-effect-canvas" width="1777" height="841"></canvas>
     
     <main class="content on">
+      <header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="/">
       
-<section class="cover">
+      <img src="/favicon.svg" alt="LightMC LightMinecraft" />
+      
+      <span>LightMC</span>
+    </a>
+
+    <button type="button" class="topbar__toggle" aria-label="菜单" aria-expanded="false">
+      <i class="ri-menu-line"></i>
+    </button>
+
+    <nav class="topbar__nav">
+      
+      <a class="topbar__link" href="/"
+        >主页</a>
+      
+      <a class="topbar__link" href="/archives"
+        >全部文章</a>
+      
+      <a class="topbar__link" href="/categories"
+        >文章分类</a>
+      
+      <a class="topbar__link" href="/tags"
+        >全部标签</a>
+      
+      <a class="topbar__link" href="/friends"
+        >友情链接</a>
+      
+      <a class="topbar__link" href="/about"
+        >关于本站</a>
+      
+      
+      <a class="topbar__icon nav-item-search" role="button" tabindex="0" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+    </nav>
+  </div>
+</header>
+
+      <div class="search-form-wrap"><div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div></div>
+      <aside class="widget-rail">
+        <section class="profile-card">
+  <div class="profile-card__avatar">
+    <img src="/favicon.svg"
+      alt="LightMC" />
+  </div>
+  <h2 class="profile-card__name">LightMC</h2>
   
+  <p class="profile-card__desc">LightMC的博客</p>
+  
+  <ul class="profile-card__stats">
+    <li><strong>17</strong><span>标签</span></li>
+    <li><strong>5</strong><span>分类</span></li>
+    <li><strong>12</strong><span>文章</span></li>
+  </ul>
+</section>
 
-  <div class="cover-frame">
-    
-    
-    <div class="cover-inner text-center text-white">
-      <a href="/"><h1>LightMC LightMinecraft</h1></a>
-      <div id="subtitle-box">
         
-          <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
+<section id="history-today" class="history-today" hidden
+  data-max="5"
+  data-src="/data/history/">
+  <h2 class="history-today__title">
+    <i class="ri-history-line"></i>
+    <span>历史上的今天</span>
+    <time class="history-today__date"></time>
+  </h2>
+  <ul class="history-today__list"></ul>
 </section>
 
 
+        
+<section id="site-location" class="side-widget side-location" hidden
+  data-weather="true"
+  data-cache-minutes="30">
+  <h3 class="side-widget__title">
+    <i class="ri-map-pin-2-line"></i>
+    <span>位置 · 天气</span>
+  </h3>
+  <p class="side-location__city">定位中…</p>
+  <p class="side-location__weather"></p>
+</section>
 
-  <script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['Explore.Dream.Discover.', '恐惧是生物的本能，勇气是人类的赞歌', '这是最好的时代，也是最坏的时代。这是智慧的时代，也是愚蠢的时代。这是信任的年代，也是怀疑的年代。这是光明的季节，也是黑暗的季节。这是希望的春天，也是失望的冬天。我们将拥有一切，我们将一无所有。我们直升天堂，我们直下地狱。'],
-        startDelay: 1000,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
+
+      </aside>
+      
+
 
 
 <div id="main">
@@ -218,22 +268,6 @@
   
 
   
-  
-<section id="history-today" class="history-today" hidden
-  data-max="6"
-  data-src="/data/history/">
-  <h2 class="history-today__title">
-    <i class="ri-history-line"></i>
-    <span>历史上的今天</span>
-    <time class="history-today__date"></time>
-  </h2>
-  <ul class="history-today__list"></ul>
-</section>
-
-
-  
-
-  
 
   <article class="articles">
     
@@ -247,7 +281,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -281,22 +314,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        <p class="article-preview">大家好，这里是LightMC 如你所知，目前我已经处于半退网状态 想联系我当然是可以的，给 ab797597@outlook.com 发邮件，我看到了就会回的 退网其实是我经过深思熟虑之后的决定，理论上理由应该是为了好好学习天天向上 Good Good Study Day Day Up 之类的话 但真相很简单，我累了 我真的很累，心累 有的时候都不明白自己到底要去往何方，我向往光明，但是路上的艰难险阻太多，并且其中的一些我还完全无法摆脱…</p>
-        
-        
-        <a class="article-more-link" href="/2026/11/04/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%96%B0%E6%97%B6%E4%BB%A3/">显示更多...</a>
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -326,7 +343,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -360,20 +376,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        
-        <a class="article-more-link" href="/2026/10/21/Foundation-4K/">显示更多...</a>
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -403,7 +405,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -437,22 +438,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        <p class="article-preview">图论 图的存储 你总得会存图，对吧 邻接矩阵 用二维数组的一种存储图的方式，好写，时间复杂度好一些，但是空间复杂度大，容易爆空间 查询是否存在某条边：𝑂(1) 遍历一个点的所有出边：𝑂(𝑛) 遍历整张图：𝑂(𝑛^2) 空间复杂度：𝑂(𝑛^2) 挺不错的是吗？来看看代码 下面来看看邻接表 邻接表 举个例子吧 有一个图上有一个点u，它和点1，2，4皆相连 于是邻接表便存成 adj[u]={1,2,4} 直接存点，甚好甚好 复杂…</p>
-        
-        
-        <a class="article-more-link" href="/2026/10/15/%E5%9B%BE%E8%AE%BA%E6%A0%91%E8%AE%BA%E5%9F%BA%E7%A1%80/">显示更多...</a>
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -482,7 +467,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -516,22 +500,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        <p class="article-preview">只是基础 图论</p>
-        
-        
-        <a class="article-more-link" href="/2026/10/15/%E5%B9%B6%E6%9F%A5%E9%9B%86/">显示更多...</a>
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -561,7 +529,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -595,22 +562,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        <p class="article-preview">暮色风暴挑战 我将在三只凋零风暴的追杀下，通关暮色森林并击杀凋零风暴 以下是详细规则： 凋暴增生：凋零风暴数量提升至三 命令的呼唤：进入凋零风暴体内前，必须合成出全套钻石命令工具（稿，剑，斧，铲，锄） 黑色的余晖：攻击任意一只凋零共生体前，必须合成出全部下界合金工具与护甲 去甲：进入凋零风暴体内后，禁止穿戴胸甲 一命：全程极限模式（允许回档） 世界已定：世界种子确定，但禁止使用chuck base等工具进行查种行为，同时禁止RNG控制 …</p>
-        
-        
-        <a class="article-more-link" href="/2026/09/19/TwilightForest-WitherStorm/">显示更多...</a>
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -640,7 +591,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -674,22 +624,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        <p class="article-preview">二分 二分查找 最优时间复杂度为O(1)，平均/最坏时间复杂度为O(log n) 实现： STL 中提供了查找首个大于等于给定值元素的函数 lower_bound STL 中提供了查找首个大于给定值元素的函数 upper_bound 二分答案 枚举答案时满足单调性，即可考虑使用二分法优化时间复杂度</p>
-        
-        
-        <a class="article-more-link" href="/2026/08/09/%E4%BA%8C%E5%88%86%E6%B3%95/">显示更多...</a>
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -719,7 +653,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -753,22 +686,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        <p class="article-preview">AC评测记录 源码： 这道题我们使用了一种形式化的解法，利用map结构自动排序的便利从左到右以画线的方式进行删除，最终求出最大的最小值（不证自明，这里不给出证明） 具体来讲： (*i).second--; 本行默认最左端的值一定会取（这无疑是显然的），故将其键值自减 贪心算法的核心，j先自增以保证能力值不与i相同，最后先后判断：能力值指针未溢出，能力值严格连续，能力值j严格大于能力值i 清除人数为0的能力值，防止再占用（更是为了防止极端…</p>
-        
-        
-        <a class="article-more-link" href="/2026/08/09/P4447-AHOI2018%E5%88%9D%E4%B8%AD%E7%BB%84-%E5%88%86%E7%BB%84%E9%A2%98%E8%A7%A3/">显示更多...</a>
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -798,7 +715,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -832,22 +748,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        <p class="article-preview">C++STL容器：map&amp;set map 定义 map&lt;Typename1, Typename2&gt; Yourtype; 值得注意的一点是，map重载了operator[]，可以跟数组一样当下标用。 一个使用map的实例： map&lt;int, int&gt; ty; 值得注意的是，当创建字符串对整数的映射是，只能用string，而不能用int map中不存在相同元素 插入与删除 可直接通过下标访问，如 mp[&#34;aaa&#34;]=100; 向map中插入…</p>
-        
-        
-        <a class="article-more-link" href="/2026/08/08/STL-map/">显示更多...</a>
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -877,7 +777,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -911,22 +810,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        <p class="article-preview">浅谈Minecraft 致我的10年Minecraft时光 上篇 经历 第一阶段 4~8岁 那个时候还在玩迷你世界，也正值互联网一战爆发，我也参与了其中。最开始也是坚定的支持迷你世界，后来了解到MC才是正统，转头直接“弃暗投明”，转战MC。中间还当了一段时间两面派，即既支持MC又支持迷你，主张两边和平共同发展，然后不出所料，也是被骂了好吧。 第二阶段 8岁~2022年 由于要学编程，我爸给我配了电脑，剧情开始反转。 我第一次接触了Jav…</p>
-        
-        
-        <a class="article-more-link" href="/2026/07/11/%E6%B5%85%E8%B0%88Minecraft/">显示更多...</a>
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -956,7 +839,6 @@
   itemprop="blogPost"
   data-scroll-reveal
 >
-  
   <div class="article-inner">
     
     <header class="article-header">
@@ -990,18 +872,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-        
-        
-      
-
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -1024,14 +894,133 @@
 </article>
 
       
+      <article
+  id="post-C-cpp入门教程"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2026/07/10/C-cpp%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"
+    >C++/cpp入门教程</a> 
+</h2>
+ 
+
+      
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2026/07/10/C-cpp%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" class="article-date">
+  <time datetime="2026-07-10T12:39:17.000Z" itemprop="datePublished">2026-07-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/">编程开发</a>
+  </div>
+
+      
+        
+      
+    </div>
+    
+
+    
+
+    
+
+    <!-- copyright -->
+    
+
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" rel="tag">编程入门</a></li></ul>
+
+    </footer>
+  </div>
+
+  
+
+  
+
+  <!-- [2026-03] 评论系统已从 Gitalk/Twikoo 迁移至 giscus，详见 doc/audit-report.md #1 #9 -->
+
+  
+</article>
+
+      
+      <article
+  id="post-Hello"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2026/07/10/Hello/"
+    >&lt;Hello!&gt;</a> 
+</h2>
+ 
+
+      
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2026/07/10/Hello/" class="article-date">
+  <time datetime="2026-07-10T07:50:30.000Z" itemprop="datePublished">2026-07-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+  </div>
+
+      
+        
+      
+    </div>
+    
+
+    
+
+    
+
+    <!-- copyright -->
+    
+
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+
+    </footer>
+  </div>
+
+  
+
+  
+
+  <!-- [2026-03] 评论系统已从 Gitalk/Twikoo 迁移至 giscus，详见 doc/audit-report.md #1 #9 -->
+
+  
+</article>
+
+      
     
   </article>
 
-  
-  <nav class="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">next page</a>
-  </nav>
   
 </section>
 
@@ -1075,18 +1064,6 @@
         
       </li>
     </ul>
-    <!-- 访客定位 -->
-    
-    <ul>
-      <li>
-        <span id="site-location" class="site-location" hidden
-              data-weather="true"
-              data-cache-minutes="30">
-          <i class="ri-map-pin-2-line"></i><span class="site-location__text"></span>
-        </span>
-      </li>
-    </ul>
-    
     <!-- 随机句子模块 -->
     
     <ul>
@@ -1104,84 +1081,7 @@
   <i class="ri-arrow-up-line"></i>
 </div>
 
-<div class="float-btn todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
-
     </div>
-    <aside class="sidebar on">
-      <button class="float-btn navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/favicon.svg" alt="LightMC LightMinecraft"></a>
-  </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/"
-         
-      >主页</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/archives"
-         
-      >全部文章</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/categories"
-         
-      >文章分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/tags"
-         
-      >全部标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/friends"
-         
-      >友情链接</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link"
-         href="/about"
-         
-      >关于本站</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="Search">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
     <div id="mask"></div>
 
 
@@ -1404,10 +1304,6 @@
 
 <!-- CanvasBackground -->
 
-  
-<script src="/js/dz.js"></script>
-
-
 
 <!-- 定位 / 历史上的今天 -->
 
@@ -1424,22 +1320,19 @@
 
 
     
-    <div id="music">
     
-    
-    
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=2653011467&auto=1&height=32"></iframe>
+
+<div id="music" class="music-widget">
+  <div class="music-panel" hidden>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86"
+      data-src="//music.163.com/outchain/player?type=2&amp;id=2653011467&amp;auto=1&amp;height=66" title="网易云音乐播放器"></iframe>
+  </div>
+  <button type="button" class="music-toggle" aria-label="网易云音乐" aria-expanded="false" title="网易云音乐">
+    <i class="ri-music-2-line"></i>
+  </button>
 </div>
 
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
+
     
     
 
