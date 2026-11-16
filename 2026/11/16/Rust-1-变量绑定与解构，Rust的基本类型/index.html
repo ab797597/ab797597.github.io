@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+
+<html lang="zh_CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="LightMC的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Rust#1 变量绑定与解构，Rust的基本类型 |  LightMC LightMinecraft</title>
+  <meta name="generator" content="hexo-theme-ayeria">
+      
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      
+      <link rel="preconnect" href="https://fonts.font.im" crossorigin />
+      <link rel="preconnect" href="https://fonts.gstatic.font.im" crossorigin />
+      <link rel="stylesheet" href="https://fonts.font.im/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400&display=swap" />
+      
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/ayeria-layout.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+
+      
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      
+
+      <!-- mermaid -->
+      
+      
+      <!-- 随机句子功能 -->
+      
+      <script src="/js/random-sentences.js"></script>
+      
+
+      <!-- 首页开场过渡（纯白背景 + 文字逐字淡入） -->
+      
+    <link rel="alternate" href="/atom.xml" title="LightMC LightMinecraft" type="application/atom+xml">
+</head>
+
+
+
+<body>
+  
+
+  <div id="app">
+    
+    
+      <canvas class="click-effect-canvas" width="1777" height="841"></canvas>
+    
+    <main class="content on">
+      <header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="/">
+      
+      <img src="/favicon.svg" alt="LightMC LightMinecraft" />
+      
+      <span>LightMC</span>
+    </a>
+
+    <button type="button" class="topbar__toggle" aria-label="菜单" aria-expanded="false">
+      <i class="ri-menu-line"></i>
+    </button>
+
+    <nav class="topbar__nav">
+      
+      <a class="topbar__link" href="/"
+        >主页</a>
+      
+      <a class="topbar__link" href="/archives"
+        >全部文章</a>
+      
+      <a class="topbar__link" href="/categories"
+        >文章分类</a>
+      
+      <a class="topbar__link" href="/tags"
+        >全部标签</a>
+      
+      <a class="topbar__link" href="/friends"
+        >友情链接</a>
+      
+      <a class="topbar__link" href="/about"
+        >关于本站</a>
+      
+      
+      <a class="topbar__icon nav-item-search" role="button" tabindex="0" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+    </nav>
+  </div>
+</header>
+
+      <div class="search-form-wrap"><div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div></div>
+      <aside class="widget-rail">
+        <section class="profile-card">
+  <div class="profile-card__avatar">
+    <img src="/favicon.svg"
+      alt="LightMC" />
+  </div>
+  <h2 class="profile-card__name">LightMC</h2>
+  
+  <p class="profile-card__desc">LightMC的博客</p>
+  
+  <ul class="profile-card__stats">
+    <li><strong>12</strong><span>标签</span></li>
+    <li><strong>3</strong><span>分类</span></li>
+    <li><strong>8</strong><span>文章</span></li>
+  </ul>
+</section>
+
+        
+<section id="history-today" class="history-today" hidden
+  data-max="5"
+  data-src="/data/history/">
+  <h2 class="history-today__title">
+    <i class="ri-history-line"></i>
+    <span>历史上的今天</span>
+    <time class="history-today__date"></time>
+  </h2>
+  <ul class="history-today__list"></ul>
+</section>
+
+
+        
+<section id="site-location" class="side-widget side-location" hidden
+  data-weather="true"
+  data-cache-minutes="30">
+  <h3 class="side-widget__title">
+    <i class="ri-map-pin-2-line"></i>
+    <span>位置 · 天气</span>
+  </h3>
+  <p class="side-location__city">定位中…</p>
+  <p class="side-location__weather"></p>
+</section>
+
+
+      </aside>
+      <section class="outer">
+  <article
+  id="[post]-Rust-1-变量绑定与解构，Rust的基本类型"
+  class="article article-type-[post]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Rust#1 变量绑定与解构，Rust的基本类型
+</h1>
+ 
+
+      
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2026/11/16/Rust-1-%E5%8F%98%E9%87%8F%E7%BB%91%E5%AE%9A%E4%B8%8E%E8%A7%A3%E6%9E%84%EF%BC%8CRust%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" class="article-date">
+  <time datetime="2026-11-15T23:39:59.000Z" itemprop="datePublished">2026-11-16</time>
+</a>
+      
+      
+        
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">6 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      <h1 id="一-变量绑定"><a href="#一-变量绑定" class="headerlink" title="一.变量绑定"></a>一.变量绑定</h1><h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h2><p>形如<code>let a = 1</code>的被称为变量绑定<br>在<code>Rust</code>中无需主动输入数据类型，数据类型会被自动检测<br>此类变量为不可变变量<br>形如<code>let mut a = 1</code>的被称为可变变量<br>此类变量的数值可以改变，上述均被称作变量<br>如果强行修改不可变变量的值，会报错</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">   Compiling variables v0.<span class="number">1.0</span> (file:<span class="comment">///projects/variables)</span></span><br><span class="line">error[E0384]: cannot assign twice to immutable variable `x`</span><br><span class="line">-<span class="punctuation">-&gt;</span> src/main.rs:<span class="number">4</span>:<span class="number">5</span></span><br><span class="line">  |</span><br><span class="line"><span class="number">2</span> |     <span class="keyword">let</span> <span class="variable">x</span> = <span class="number">5</span>;</span><br><span class="line">  |         -</span><br><span class="line">  |         |</span><br><span class="line">  |         first assignment to `x`</span><br><span class="line">  |         help: consider making this binding mutable: `<span class="keyword">mut</span> x`</span><br><span class="line"><span class="number">3</span> |     <span class="built_in">println!</span>(<span class="string">&quot;The value of x is: &#123;&#125;&quot;</span>, x);</span><br><span class="line"><span class="number">4</span> |     x = <span class="number">6</span>;</span><br><span class="line">  |     ^^^^^ cannot assign twice to immutable variable</span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br></pre></td></tr></table></figure>
+<p>如上所示<br>未使用的变量，依据规范，应使用_开头作为变量名，形如<code>let _x = 5</code></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> (a, <span class="keyword">mut</span> b): (<span class="type">bool</span>,<span class="type">bool</span>) = (<span class="literal">true</span>, <span class="literal">false</span>);</span><br><span class="line">    <span class="comment">// a = true,不可变; b = false，可变</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;a = &#123;:?&#125;, b = &#123;:?&#125;&quot;</span>, a, b);</span><br><span class="line"></span><br><span class="line">    b = <span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">assert_eq!</span>(a, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述操作被命名为变量的解构<br>其中<code>assert_eq!</code>为断言操作，即断言<code>a==b</code><br>若<code>a!=b</code>，则会抛出错误</p>
+<h2 id="2-常量"><a href="#2-常量" class="headerlink" title="2.常量"></a>2.常量</h2><p>常量使用如下代码声明:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MAX_POINTS: <span class="type">u32</span> = <span class="number">100_000</span>;</span><br></pre></td></tr></table></figure>
+<p>常量不可添加<code>mut</code>关键字，非要添加就会报错</p>
+<h2 id="3-变量遮蔽"><a href="#3-变量遮蔽" class="headerlink" title="3.变量遮蔽"></a>3.变量遮蔽</h2><p>如下操作即为变量遮蔽：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">x</span> = <span class="number">5</span>;</span><br><span class="line">    <span class="comment">// 在main函数的作用域内对之前的x进行遮蔽</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">x</span> = x + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 在当前的花括号作用域内，对之前的x进行遮蔽</span></span><br><span class="line">        <span class="keyword">let</span> <span class="variable">x</span> = x * <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;The value of x in the inner scope is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行后将会输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">   Compiling variables v0.1.0 (file:///projects/variables)</span><br><span class="line">   ...</span><br><span class="line">The value of x in the inner scope is: 12</span><br><span class="line">The value of x is: 6</span><br></pre></td></tr></table></figure>
+<p>变量遮蔽的用处在于，如果你在某个作用域内无需再使用之前的变量（在被遮蔽后，无法再访问到之前的同名变量），就可以重复的使用变量名字，而不用绞尽脑汁去想更多的名字。</p>
+<h1 id="二-基本类型"><a href="#二-基本类型" class="headerlink" title="二.基本类型"></a>二.基本类型</h1><p><del><code>Rust</code>是一门无聊的要死的语言</del><br><code>Rust</code>是一门安全性高且复杂困难的语言（指学习难度）</p>
+<h2 id="一-数值类型"><a href="#一-数值类型" class="headerlink" title="(一)数值类型"></a>(一)数值类型</h2><h3 id="1-整数类型"><a href="#1-整数类型" class="headerlink" title="1.整数类型"></a>1.整数类型</h3><table>
+<thead>
+<tr>
+<th>长度</th>
+<th>有符号整型</th>
+<th>无符号整型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8位</td>
+<td>i8</td>
+<td>u8</td>
+</tr>
+<tr>
+<td>16位</td>
+<td>i16</td>
+<td>u16</td>
+</tr>
+<tr>
+<td>32位</td>
+<td>i32</td>
+<td>u32</td>
+</tr>
+<tr>
+<td>64位</td>
+<td>i64</td>
+<td>u64</td>
+</tr>
+<tr>
+<td>128位</td>
+<td>i128</td>
+<td>u128</td>
+</tr>
+<tr>
+<td>视架构而定</td>
+<td>isize</td>
+<td>usize</td>
+</tr>
+</tbody></table>
+<p>在当使用 <code>--release</code> 参数进行 <code>release</code> 模式构建时，<code>Rust</code> 不检测溢出。相反，当检测到整型溢出时，<code>Rust</code> 会按照补码循环溢出（<code>two’s complement wrapping</code>）的规则处理。<br>一些方法可以处理这些问题：</p>
+<ul>
+<li>使用<code>wrapping_*</code>方法在所有模式下都按照补码循环溢出规则处理，例如<code>wrapping_add</code></li>
+<li>如果使用<code>checked_*</code>方法时发生溢出，则返回<code>None</code>值</li>
+<li>使用<code>overflowing_*</code>方法返回该值和一个指示是否存在溢出的布尔值</li>
+<li>使用<code>saturating_*</code>方法，可以限定计算后的结果不超过目标类型的最大值或低于最小值</li>
+</ul>
+<h3 id="2-浮点类型"><a href="#2-浮点类型" class="headerlink" title="2.浮点类型"></a>2.浮点类型</h3><p>我们一般用<code>f64</code>（默认也是用这个）<br>默认本文读者已经清楚计算机对于浮点数存储的精度问题，在此不展开说明<br>(经典的<code>assert_eq!(0.1+0.2 ,0.3)</code>会报错)</p>
+<h4 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a><code>NaN</code></h4><p>所有会产生莫名其妙数字的情况（比如<code>-114514.sqrt()</code>）都会返回一个<code>NaN</code><br>出于<del>防御性编程</del>防止所有东西都变成<code>NaN</code>的考虑，可以加<code>is_nan()</code>方法</p>
+<h3 id="3-数字运算"><a href="#3-数字运算" class="headerlink" title="3.数字运算"></a>3.数字运算</h3><p><code>Rust</code>拥有与其他语言完全一致的数字运算方法，在此不再展开</p>
+<h3 id="4-位运算"><a href="#4-位运算" class="headerlink" title="4.位运算"></a>4.位运算</h3><p><code>Rust</code>拥有与其他语言完全一致的位运算方法，在此不再展开</p>
+<h3 id="5-序列"><a href="#5-序列" class="headerlink" title="5.序列"></a>5.序列</h3><p><code>Rust</code>提供了一套很不错的序列生成方法<br>下面直接贴代码</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="number">1</span>..=<span class="number">5</span> &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<p>注意，字符类型也是可以调用该方法的（只有整数和字符类型可以）</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="string">&#x27;a&#x27;</span>..=<span class="string">&#x27;z&#x27;</span> &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">d</span><br><span class="line">e</span><br><span class="line">f</span><br><span class="line">g</span><br><span class="line">h</span><br><span class="line">i</span><br><span class="line">j</span><br><span class="line">k</span><br><span class="line">l</span><br><span class="line">m</span><br><span class="line">n</span><br><span class="line">o</span><br><span class="line">p</span><br><span class="line">q</span><br><span class="line">r</span><br><span class="line">s</span><br><span class="line">t</span><br><span class="line">u</span><br><span class="line">v</span><br><span class="line">w</span><br><span class="line">x</span><br><span class="line">y</span><br><span class="line">z</span><br></pre></td></tr></table></figure>
+<p><del>这是何意味啊</del></p>
+<h3 id="5-使用As完成类型转换"><a href="#5-使用As完成类型转换" class="headerlink" title="5.使用As完成类型转换"></a>5.使用<code>As</code>完成类型转换</h3><p>这一段先跳过，等我学完加<code>link</code></p>
+<h2 id="（二）字符，布尔，单元类型"><a href="#（二）字符，布尔，单元类型" class="headerlink" title="（二）字符，布尔，单元类型"></a>（二）字符，布尔，单元类型</h2><h3 id="1-字符类型————char"><a href="#1-字符类型————char" class="headerlink" title="1.字符类型————char"></a>1.字符类型————<code>char</code></h3><p>默认各位会一两门编程语言，下面直接讲区别：<br>在<code>Rust</code>中，<code>Rust</code>的字符类型支持<strong>一切</strong><code>Unicode</code>中的字符，当然，代价是<code>Rust</code>中的每一个字符占用<code>4</code>字节空间<br>在<code>Rust</code>中，只能用<code>&#39;&#39;</code>来表示字符</p>
+<h3 id="2-布尔类型————bool"><a href="#2-布尔类型————bool" class="headerlink" title="2.布尔类型————bool"></a>2.布尔类型————<code>bool</code></h3><p>跟别的语言一模一样</p>
+<h3 id="3-单元类型————"><a href="#3-单元类型————" class="headerlink" title="3.单元类型————()"></a>3.单元类型————<code>()</code></h3><p>占<code>0</code>字节，它就只是个括号<br>暂时可以理解成占位符，与<code>C++</code>中的<code>void</code>类似，但是避免了显式处理</p>
+<h2 id="三-语句和表达式"><a href="#三-语句和表达式" class="headerlink" title="(三)语句和表达式"></a>(三)语句和表达式</h2><p>Rust 的函数体是由一系列语句组成，最后由一个表达式来返回值，例如：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">add_with_extra</span>(x: <span class="type">i32</span>, y: <span class="type">i32</span>) <span class="punctuation">-&gt;</span> <span class="type">i32</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">x</span> = x + <span class="number">1</span>; <span class="comment">// 语句</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">y</span> = y + <span class="number">5</span>; <span class="comment">// 语句</span></span><br><span class="line">    x + y <span class="comment">// 表达式</span></span><br><span class="line">&#125;<span class="comment">//令人震撼的是这玩意居然不报错</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-语句"><a href="#1-语句" class="headerlink" title="1.语句"></a>1.语句</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">a</span> = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="variable">b</span>: <span class="type">Vec</span>&lt;<span class="type">f64</span>&gt; = <span class="type">Vec</span>::<span class="title function_ invoke__">new</span>();</span><br><span class="line"><span class="keyword">let</span> (a, c) = (<span class="string">&quot;hi&quot;</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<p>这些都是语句，显然，它们都没有返回值<br>所以语句的定义也就呼之欲出了</p>
+<h3 id="2-表达式"><a href="#2-表达式" class="headerlink" title="2.表达式"></a>2.表达式</h3><p>表达式会进行求值，然后返回一个值。例如<code>5 + 6</code>，在求值后，返回值<code>11</code>，因此它就是一条表达式。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">x</span> = <span class="number">3</span>;</span><br><span class="line">    x + <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个也是表达式（不用多解释了吧）<br>表达式若不返回任何值，会隐式的返回一个<code>()</code></p>
+<h2 id="（四）函数"><a href="#（四）函数" class="headerlink" title="（四）函数"></a>（四）函数</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">add</span>(i: <span class="type">i32</span>, j: <span class="type">i32</span>) <span class="punctuation">-&gt;</span> <span class="type">i32</span> &#123;</span><br><span class="line">   i + j</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>这就是一个函数，麻雀虽小，五脏俱全</p>
+<ul>
+<li>函数名和变量名使用蛇形命名法(<code>snake case</code>)，例如 <code>fn add_two() -&gt; {}</code></li>
+<li>函数的位置可以随便放，<code>Rust</code>不关心我们在哪里定义了函数，只要有定义即可</li>
+<li>每个函数参数都需要标注类型</li>
+<li>函数也是表达式</li>
+<li>我们可以使用<code>return</code>方法提前返回函数的值<br>当用<code>!</code>作为函数的返回值时，代表该函数永远不会有返回值（请避免使用它）</li>
+</ul>
+
+
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+            Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+
+    <footer class="article-footer">
+      
+        
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+  <div class="wx-modal-close">
+    <i class="ri-close-line"></i>
+  </div>
+  <p class="wx-modal-caption">扫一扫，分享到微信</p>
+  <div class="wx-qrcode-frame">
+    <img class="wx-qrcode-img" src="" data-url="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Flightmc.dpdns.org%2F2026%2F11%2F16%2FRust-1-%25E5%258F%2598%25E9%2587%258F%25E7%25BB%2591%25E5%25AE%259A%25E4%25B8%258E%25E8%25A7%25A3%25E6%259E%2584%25EF%25BC%258CRust%25E7%259A%2584%25E5%259F%25BA%25E6%259C%25AC%25E7%25B1%25BB%25E5%259E%258B%2F" alt="微信分享二维码">
+  </div>
+</div>
+
+<div id="share-mask"></div>
+
+      
+      
+    </footer>
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2026/10/15/%E5%9B%BE%E8%AE%BA%E6%A0%91%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">next passage</strong>
+        <div class="article-nav-title">图论树论基础</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  <!-- [2026-03] 评论系统已从 Gitalk/Twikoo 迁移至 giscus，详见 doc/audit-report.md #1 #9 -->
+
+  
+    
+
+  
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2026
+        <i class="ri-heart-fill heart_icon"></i> LightMC
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+    <!-- 随机句子模块 -->
+    
+    <ul>
+      <li>
+        <div id="random-sentence" class="random-sentence" 
+             data-random-sentences-config='{"use_local_file": true}'></div>
+      </li>
+    </ul>
+    
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="float-btn totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+    </div>
+    <div id="mask"></div>
+
+
+
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<!-- Tocbot -->
+
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css" />
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/dist/main.js"></script>
+
+
+<!-- ImageViewer -->
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+<!-- MathJax -->
+
+
+<!-- Katex -->
+
+
+<!-- busuanzi -->
+
+  
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<!-- ClickLove -->
+
+
+<!-- ClickBoom1 -->
+
+
+<!-- ClickBoom2 -->
+
+  
+<script src="/js/clickBoom2.js"></script>
+
+
+
+<!-- CodeCopy -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+<!-- CanvasBackground -->
+
+
+<!-- 定位 / 历史上的今天 -->
+
+  
+<script src="/js/site-widgets.js"></script>
+
+
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+<div id="music" class="music-widget">
+  <div class="music-panel" hidden>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86"
+      data-src="//music.163.com/outchain/player?type=2&amp;id=2653011467&amp;auto=1&amp;height=66" title="网易云音乐播放器"></iframe>
+  </div>
+  <button type="button" class="music-toggle" aria-label="网易云音乐" aria-expanded="false" title="网易云音乐">
+    <i class="ri-music-2-line"></i>
+  </button>
+</div>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
