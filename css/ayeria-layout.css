@@ -182,7 +182,7 @@
   box-shadow: 0 12px 30px rgba(40,80,130,0.08);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  max-height: 42rem;
+  max-height: calc(100vh - 8.4rem);
   overflow-y: auto;
 }
 .toc-panel .toc-panel__label {
@@ -242,7 +242,7 @@
 }
 .toc-panel .toc-list li.is-active-li > a.toc-link {
   color: #3f72a8;
-  font-weight: 600;
+  font-weight: 700;
 }
 .toc-panel .toc-list a.toc-link {
   color: #5b7a9a;
@@ -907,7 +907,7 @@ a:hover {
   height: 100%;
   padding: 0 2rem;
 }
-.content {
+body.has-rail .content {
   padding-right: 30rem;
 }
 #main > .outer,
@@ -968,7 +968,7 @@ a:hover {
   padding: 1.2rem;
 }
 @media (max-width: 1200px) {
-  .content {
+  body.has-rail .content {
     padding-right: 0;
   }
   .widget-rail {
@@ -988,7 +988,7 @@ a:hover {
   }
 }
 @media (max-width: 768px) {
-  .content {
+  body.has-rail .content {
     padding-right: 0;
   }
   .widget-rail {
