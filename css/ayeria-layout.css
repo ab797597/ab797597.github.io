@@ -1003,4 +1003,56 @@ body.has-rail .content {
     padding: 1.4rem;
     min-height: auto;
   }
+  body.post-page .content {
+    padding-right: 14rem;
+  }
+  body.post-page .widget-rail {
+    position: fixed;
+    top: 6.2rem;
+    right: 0;
+    bottom: 0;
+    width: 14rem;
+    margin: 0;
+    padding: 0.8rem;
+    flex-direction: column;
+    border: 0;
+    border-left: 1px solid rgba(120,155,195,0.16);
+    border-radius: 0;
+    box-shadow: none;
+    background-color: rgba(255,255,255,0.96);
+  }
+  body.post-page .toc-panel {
+    height: 100%;
+    max-height: none;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+  }
+  body.post-page .toc-panel .tocbot {
+    display: block !important;
+  }
+  body.post-page .toc-panel .toc-panel__label {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+  }
+  body.post-page .toc-panel .toc-panel__title {
+    margin: 0.2rem 0 0.6rem;
+    font-size: 1.1rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+  body.post-page .toc-panel .toc-list li {
+    padding-left: 0.5rem;
+  }
+  body.post-page .toc-panel .toc-list li::before {
+    min-width: 1.4rem;
+    font-size: 0.9rem;
+  }
+  body.post-page .toc-panel a.toc-link {
+    font-size: 0.95rem;
+  }
+  body.post-page #main > .outer,
+  body.post-page .content > .outer {
+    margin: 0.8rem;
+    padding: 1.2rem;
+  }
 }
