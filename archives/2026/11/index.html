@@ -111,6 +111,7 @@
   <div id="local-search-result" class="local-search-result"></div>
 </div></div>
       <aside class="widget-rail">
+        
         <section class="profile-card">
   <div class="profile-card__avatar">
     <img src="/favicon.svg"
@@ -121,7 +122,7 @@
   <p class="profile-card__desc">LightMC的博客</p>
   
   <ul class="profile-card__stats">
-    <li><strong>12</strong><span>标签</span></li>
+    <li><strong>13</strong><span>标签</span></li>
     <li><strong>3</strong><span>分类</span></li>
     <li><strong>8</strong><span>文章</span></li>
   </ul>
@@ -180,7 +181,7 @@
       </div>
       <div class="archives">
         
-        <article class="archive-article archive-type-[post]">
+        <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <a href="/2026/11/16/Rust-1-%E5%8F%98%E9%87%8F%E7%BB%91%E5%AE%9A%E4%B8%8E%E8%A7%A3%E6%9E%84%EF%BC%8CRust%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
@@ -401,6 +402,26 @@
 
 
 <!-- Katex -->
+
+  
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                    ],
+                    throwOnError: false
+                });
+            });
+        </script>
+    
+
 
 
 <!-- busuanzi -->

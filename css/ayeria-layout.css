@@ -166,6 +166,92 @@
     font-size: 1.8rem;
   }
 }
+.math-display {
+  margin: 1rem 0;
+  text-align: center;
+  overflow-x: auto;
+}
+.math-inline {
+  white-space: nowrap;
+}
+.toc-panel {
+  padding: 1.4rem;
+  background-color: rgba(255,255,255,0.72);
+  border: 1px solid rgba(120,155,195,0.18);
+  border-radius: 1.4rem;
+  box-shadow: 0 12px 30px rgba(40,80,130,0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  max-height: 42rem;
+  overflow-y: auto;
+}
+.toc-panel .toc-panel__label {
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  color: #9ab0c6;
+}
+.toc-panel .toc-panel__title {
+  margin: 0.3rem 0 0.9rem;
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #2c3e50;
+}
+.toc-panel .tocbot {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  padding: 0;
+  max-width: none;
+  background: transparent;
+  opacity: 1;
+}
+.toc-panel .tocbot.is-position-fixed {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  background: transparent;
+}
+.toc-panel .toc-list {
+  counter-reset: toc;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: visible;
+  max-height: none;
+}
+.toc-panel .toc-list .toc-list {
+  padding-left: 0.6rem;
+}
+.toc-panel .toc-list li {
+  counter-increment: toc;
+  position: relative;
+  padding: 0.18rem 0 0.18rem 0.9rem;
+  border-left: 2px solid transparent;
+  line-height: 1.5;
+}
+.toc-panel .toc-list li::before {
+  content: counters(toc, ".") ".";
+  display: inline-block;
+  min-width: 1.8rem;
+  color: #9ab0c6;
+  font-size: 1.05rem;
+}
+.toc-panel .toc-list li.is-active-li {
+  border-left-color: #4a86d8;
+}
+.toc-panel .toc-list li.is-active-li > a.toc-link {
+  color: #3f72a8;
+  font-weight: 600;
+}
+.toc-panel .toc-list a.toc-link {
+  color: #5b7a9a;
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+.toc-panel .toc-list a.toc-link::before {
+  display: none;
+}
 @media (max-width: 768px) {
   .history-today {
     padding: 1.2rem 1.4rem;
@@ -861,7 +947,8 @@ a:hover {
 }
 .widget-rail .profile-card,
 .widget-rail .history-today,
-.widget-rail .side-widget {
+.widget-rail .side-widget,
+.widget-rail .toc-panel {
   width: 100%;
 }
 .widget-rail .profile-card {

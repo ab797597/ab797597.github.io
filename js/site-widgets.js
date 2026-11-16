@@ -323,6 +323,32 @@
     });
   }
 
+  // 目录：去掉标题里已有的“一.”“1.”等编号，交给 CSS 自动编号
+  function initToc() {
+    var links = document.querySelectorAll('.toc-panel .tocbot a.toc-link');
+    Array.prototype.forEach.call(links, function (link) {
+      var text = link.textContent;
+      var cleaned = text.replace(/^[0-9一二三四五六七八九十百]+[.、．]\s*/, '');
+      if (cleaned && cleaned !== text) link.textContent = cleaned;
+    });
+  }
+
+  // LaTeX：渲染 Markdown 预处理后的公式占位元素
+  function initMath() {
+    if (!window.katex) return;
+    var nodes = document.querySelectorAll('[data-tex]');
+    Array.prototype.forEach.call(nodes, function (el) {
+      try {
+        window.katex.render(decodeURIComponent(el.getAttribute('data-tex')), el, {
+          displayMode: el.classList.contains('math-display'),
+          throwOnError: false
+        });
+      } catch (e) {
+        /* 公式非法时保留空元素 */
+      }
+    });
+  }
+
   initLocation();
   initHistory();
 
@@ -330,6 +356,8 @@
   function initDom() {
     initMusic();
     initTopbar();
+    initToc();
+    initMath();
   }
 
   if (document.readyState === 'loading') {
