@@ -967,6 +967,9 @@ body.has-rail .content {
 .widget-rail .side-widget {
   padding: 1.2rem;
 }
+.toc-toggle {
+  display: none;
+}
 @media (max-width: 1200px) {
   body.has-rail .content {
     padding-right: 0;
@@ -1054,5 +1057,31 @@ body.has-rail .content {
   body.post-page .content > .outer {
     margin: 0.8rem;
     padding: 1.2rem;
+  }
+  body.post-page .toc-toggle {
+    position: fixed;
+    right: 0.8rem;
+    bottom: 5.8rem;
+    z-index: 70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.8rem;
+    height: 3.8rem;
+    border: 1px solid rgba(120,155,195,0.25);
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.94);
+    color: #3f72a8;
+    font-size: 1.7rem;
+    box-shadow: 0 8px 20px rgba(40,80,130,0.16);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    cursor: pointer;
+  }
+  body.post-page.toc-hidden .widget-rail {
+    display: none;
+  }
+  body.post-page.toc-hidden .content {
+    padding-right: 0;
   }
 }

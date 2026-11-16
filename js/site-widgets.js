@@ -349,6 +349,21 @@
     });
   }
 
+  // 移动端：显示 / 隐藏右侧目录
+  function initTocToggle() {
+    var btn = document.querySelector('.toc-toggle');
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      var hidden = document.body.classList.toggle('toc-hidden');
+      btn.setAttribute('aria-expanded', hidden ? 'false' : 'true');
+      btn.setAttribute('aria-label', hidden ? '显示目录' : '隐藏目录');
+      btn.innerHTML = hidden
+        ? '<i class="ri-menu-2-line"></i>'
+        : '<i class="ri-arrow-right-s-line"></i>';
+    });
+  }
+
   initLocation();
   initHistory();
 
@@ -358,6 +373,7 @@
     initTopbar();
     initToc();
     initMath();
+    initTocToggle();
   }
 
   if (document.readyState === 'loading') {
